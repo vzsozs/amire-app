@@ -1,11 +1,10 @@
-// src/App.jsx
-import React, { useState } from 'react'; // 'useEffect' már nem kell itt
+// src/App.jsx (LETISZTÍTOTT ÉS JAVÍTOTT STRUKTÚRA)
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { TeamProvider } from './context/TeamProvider'; 
-// import moment from 'moment'; // Moment.js már nem kell itt, mert a util függvény használja
 import { ToastProvider } from './context/ToastProvider';
 import Toast from './components/Toast';
-import { JobProvider } from './context/JobProvider'; // ÚJ IMPORT
+import { JobProvider } from './context/JobProvider';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,70 +18,26 @@ import Sidebar from './components/Sidebar';
 
 
 function App() {
-  // A 'jobs' és 'dailyNotes' állapotokat INNEN TÖRÖLTÜK, 
-  // mert a 'JobProvider' és 'HomePage' (dailyNotes) kezelik őket
-  // const [jobs, setJobs] = useState(initialJobs);
-  const [dailyNotes, setDailyNotes] = useState({}); // Ezt még át kell gondolni, de most bent hagyjuk
-
-  // A jegyzetek öröklését most a HomePage kezeli majd
-  /*
-  useEffect(() => {
-    // ...
-  }, []);
-  */
-
-  // AZ ÖSSZES handle...Job és handle...TodoItem FÜGGVÉNYT INNEN TÖRÖLTÜK,
-  // MERT A JobProvider KEZELI ŐKET
-  /*
-  const handleAddJob = (...) => { ... };
-  const handleDeleteJob = (...) => { ... };
-  const handleUpdateJob = (...) => { ... };
-  const handleAssignTeamMember = (...) => { ... };
-  const handleUnassignTeamMember = (...) => { ... };
-  const handleToggleJobSchedule = (...) => { ... };
-  const handleAddTodoItem = (...) => { ... };
-  const handleToggleTodoItem = (...) => { ... };
-  const handleDeleteTodoItem = (...) => { ... };
-  */
-
-  // Csak a napi jegyzetekhez tartozó függvények maradnak, ha megtartjuk a napi jegyzeteket
-  // Később ezt is átadhatjuk egy Context-nek, ha bonyolódik
-  const handleAddNote = (dateString, noteText) => {
-    const newNote = { id: Date.now(), text: noteText, completed: false };
-    setDailyNotes(prevNotes => {
-      const notesForDay = prevNotes[dateString] || [];
-      return { ...prevNotes, [dateString]: [...notesForDay, newNote] };
-    });
-  };
-
-  const handleToggleNote = (dateString, noteId) => {
-    setDailyNotes(prevNotes => {
-      const notesForDay = prevNotes[dateString] || [];
-      const updatedNotes = notesForDay.map(note => note.id === noteId ? { ...note, completed: !note.completed } : note);
-      return { ...prevNotes, [dateString]: updatedNotes };
-    });
-  };
-
+  // A 'dailyNotes' logikát teljesen eltávolítjuk, a HomePage-nek már nincs rá szüksége
+  // a Context-alapú rendszerben.
 
   return (
+    // A ToastProvider veszi körbe a teljes alkalmazást
     <ToastProvider>
       <TeamProvider>
         <JobProvider>
           <Router>
-            <div className="App-layout-wrapper">
+            {/* Ez a div lesz a fő konténerünk, amire a CSS-t alkalmazzuk */}
+            <div className="App"> 
               <Header />
               <div className="main-content-area">
                 <Sidebar />
                 <main className="app-content">
                   <Routes>
-                    {/* A HomePage már nem kapja meg a 'jobs' és a 'notes' propokat, Context-ből olvassa */}
-                    <Route path="/" element={<HomePage notes={dailyNotes} onAddNote={handleAddNote} onToggleNote={handleToggleNote} />} />
-                    {/* A TasksPage és JobDetailPage már nem kapja meg a 'jobs' és 'on...' propokat */}
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/tasks" element={<TasksPage />} />
                     <Route path="/tasks/:jobId" element={<JobDetailPage />} />
-                    {/* A CalendarPage már nem kapja meg a 'jobs' propot */}
                     <Route path="/calendar" element={<CalendarPage />} />
-                    {/* A TeamPage és TeamMemberDetailPage sem kap már 'team' propot */}
                     <Route path="/team" element={<TeamPage />} />
                     <Route path="/team/:memberId" element={<TeamMemberDetailPage />} />
                   </Routes>
@@ -93,6 +48,8 @@ function App() {
           </Router>
         </JobProvider>
       </TeamProvider>
+      {/* A Toast komponenst a Router-en KÍVÜL helyezzük el,
+          hogy mindig minden felett látható legyen. */}
       <Toast />
     </ToastProvider>
   );
