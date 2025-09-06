@@ -1,0 +1,118 @@
+{
+  "jobs": [
+    {
+      "id": 2,
+      "title": "Kovács Iroda Festés",
+      "status": "Befejezve",
+      "deadline": "2025-08-20",
+      "description": "Az iroda tárgyalójának és folyosójának tisztasági festése.",
+      "assignedTeam": [
+        1
+      ],
+      "schedule": [
+        "2025-08-18",
+        "2025-08-19",
+        "2025-08-20",
+        "2025-09-03",
+        "2025-09-04"
+      ],
+      "color": "#3F51B5",
+      "todoList": [
+        {
+          "id": 201,
+          "text": "Elszállítani az irodabútorokat",
+          "completed": true
+        },
+        {
+          "id": 202,
+          "text": "Festés befejezése",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 1756753705225,
+      "title": "Teszt munka",
+      "status": "Függőben",
+      "deadline": "2025-09-19",
+      "assignedTeam": [
+        2
+      ],
+      "schedule": [
+        "2025-09-01",
+        "2025-09-02",
+        "2025-09-03",
+        "2025-08-31"
+      ],
+      "todoList": [
+        {
+          "id": 1756753727542,
+          "text": "teszt feladat",
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": 1756753932705,
+      "title": "tesztelés meló",
+      "status": "Folyamatban",
+      "deadline": "2025-09-30",
+      "assignedTeam": [
+        1756753775009
+      ],
+      "schedule": [
+        "2025-09-01",
+        "2025-09-02",
+        "2025-09-03",
+        "2025-09-04",
+        "2025-09-05",
+        "2025-09-06",
+        "2025-09-07"
+      ],
+      "color": "#9C27B0"
+    }
+  ],
+  "team": [
+    {
+      "id": 1,
+      "name": "Varga Béla",
+      "role": "Festő, Mázoló",
+      "color": "#FF6F00",
+      "phone": "+36301234567",
+      "email": "bela@amire.hu",
+      "availability": [
+        "2025-09-01",
+        "2025-09-16",
+        "2025-09-17"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Kiss Mária",
+      "role": "Vízvezeték-szerelő",
+      "color": "#1E88E5",
+      "phone": "+36301112222",
+      "email": "maria@amire.hu",
+      "availability": [
+        "2025-09-01",
+        "2025-09-17",
+        "2025-09-18",
+        "2025-09-29",
+        "2025-09-30"
+      ]
+    },
+    {
+      "id": 1756753775009,
+      "name": "Zsozs",
+      "role": "Király",
+      "phone": "",
+      "email": "",
+      "color": "#E91E63",
+      "availability": [
+        "2025-09-01",
+        "2025-09-02",
+        "2025-09-03"
+      ]
+    }
+  ]
+}

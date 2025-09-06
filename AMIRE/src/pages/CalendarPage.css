@@ -1,0 +1,304 @@
+/* src/pages/CalendarPage.css */
+
+.calendar-page-container {
+  padding: 20px;
+}
+
+.calendar-page-header {
+  margin-bottom: 20px;
+}
+
+.calendar-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  background-color: #3C3C3C; /* Sötétszürke háttér a naptárnak */
+}
+
+/* react-calendar felülírása */
+.react-calendar {
+  width: 100%;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  background-color: transparent; /* A wrapper kapja a színt */
+  padding: 15px;
+}
+
+/* Navigáció (felső sáv) */
+.react-calendar__navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  /* Fontos, hogy a magassága megmaradjon, még ha a gombok el is tűnnek */
+  height: 44px; 
+}
+
+/* Eltüntetjük a gyári gombokat */
+.react-calendar__navigation__arrow {
+  display: none !important;
+}
+
+/* A gyári label-t középre igazítjuk, hogy helyet csináljon a miénknek */
+.react-calendar__navigation__label {
+  flex-grow: 1 !important;
+  pointer-events: none; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* EZ A HIÁNYZÓ RÉSZ, AMI A KÉTSOROS FELIRATOT FORMÁZZA */
+.custom-navigation-label {
+  text-align: center;
+  font-weight: bold;
+}
+.custom-navigation-label .year {
+  font-size: 0.9em;
+  color: #AAAAAA; /* Halványabb szürke az évszámnak */
+}
+.custom-navigation-label .month {
+  font-size: 1.2em;
+  color: var(--primary-light); /* Lila a hónapnak */
+  text-transform: capitalize; /* Nagy kezdőbetű */
+}
+
+
+/* Az új, saját navigációs sáv stílusa alul */
+.custom-calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #444;
+}
+
+.custom-nav-button {
+  background: none;
+  border: none;
+  color: #E0E0E0;
+  font-size: 1.2em;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.custom-nav-button:hover {
+  background-color: #555;
+}
+
+
+/* Hét napjai (H, K, SZE...) */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: 0.8em;
+}
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+/* Napok (cellák) */
+.react-calendar__tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  padding-top: 5px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: #E0E0E0;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: #555;
+}
+
+/* Mai nap */
+.react-calendar__tile--now {
+  background: none;
+  box-shadow: inset 0 0 0 1px #888;
+}
+.react-calendar__tile--now:enabled:hover {
+  background-color: #555;
+}
+
+/* Kiválasztott nap */
+.react-calendar__tile--active {
+  background: var(--primary-color) !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.react-calendar__tile.deadline-day {
+  background-color: rgba(211, 47, 47, 0.4) !important; /* Piros, 40% átlátszóság */
+  border-radius: 8px; /* Lekerekítjük a sarkokat */
+}
+.react-calendar__tile.deadline-day:hover {
+    background-color: rgba(211, 47, 47, 0.6) !important; /* Hover-re kicsit sötétebb */
+}
+
+/* ÚJ STÍLUSOK AZ ÜTEMEZETT MUNKÁKHOZ */
+/* Konténer a színes csíkoknak */
+.scheduled-job-strips {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  position: absolute; /* A pöttyök alatt lesz */
+  bottom: 1px; /* Közelebb a cella aljához */
+  left: 0;
+  right: 0;
+}
+
+/* Egyedi színes csík a munkához */
+.scheduled-job-strip {
+  width: 15px; /* Kisebb szélesség, hogy több elférjen */
+  height: 3px;
+  border-radius: 1px;
+  /* A background-color inline style-ként jön */
+}
+
+/* Hétvégék pirossal */
+.react-calendar__month-view__days__day--weekend {
+  color: #ff8a80;
+}
+
+.deadline-strip {
+  /* Itt már nem kell pozícionálni, mert a flexbox konténer elrendezi */
+  width: 70%;
+  height: 4px;
+  background-color: #ea4335;
+  border-radius: 2px;
+}
+
+
+/* Kiválasztott nap alatti szekció */
+.selected-day-jobs {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+/* Konténer a napi jelölőknek */
+.day-markers {
+  position: absolute;
+  bottom: 0; /* A cella aljára igazítjuk az egész konténert */
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column; /* Egymás alá kerülnek */
+  align-items: center;
+  gap: 1px; /* Nagyon kicsi rés a pöttyök és a csíkok között */
+  padding-bottom: 2px; /* Kicsit feljebb tolja az egész blokkot a cella aljáról */
+}
+
+/* Konténer a színes pöttyöknek */
+.availability-dots {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 9px; /* Kicsit lejjebb tolja magát a csíkoktól */
+  padding-top: 2px; /* Kicsit feljebb tolja a pöttyöket a cellán belül */
+}
+
+.availability-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* Módosított stílus a színes csíkoknak - Ezek kerülnek alulra */
+.scheduled-job-strips {
+  display: flex;
+  flex-direction: column; /* FONTOS: Most már ezek is egymás alatt vannak */
+  justify-content: center;
+  align-items: center;
+  gap: 0px; /* Nagyon kicsi rés a csíkok között */
+}
+
+.scheduled-job-strip {
+  width: 100%;
+  height: 3px;
+  border-radius: 1px;
+}
+.calendar-legend {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: var(--background-secondary, #2a2a2e); /* A sötét háttérszíned */
+  border-radius: 8px;
+  border: 1px solid var(--border-color, #444);
+  max-width: 600px; /* Opcionális, hogy ne nyúljon túl szélesre */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.calendar-legend h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--text-color, #fff);
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Térköz a jelölő és a szöveg között */
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  color: var(--text-light-color, #ccc);
+}
+
+/* A kis négyzet, ami a jelölést mutatja */
+.legend-swatch {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border-color-light, #555);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Ne zsugorodjon össze */
+  position: relative; /* Az aláhúzáshoz kell */
+}
+
+/* Külön stílusok a jelölő típusoknak */
+.legend-swatch.purple-day {
+  background-color: #4a2c7a; /* Lila, mint az aktuális nap */
+}
+
+.legend-swatch.deadline-day {
+  background-color: #dc3545; /* Piros, mint a határidő */
+}
+
+/* A munka aláhúzásának stílusa */
+.legend-job-underline {
+  position: absolute;
+  bottom: 4px; /* A négyzet aljától 4px-re */
+  left: 4px;
+  right: 4px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* A csapattagok pontjainak tárolója */
+.legend-dots-container {
+  display: flex;
+  gap: 3px;
+}
+
+/* Egy-egy pont stílusa */
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
