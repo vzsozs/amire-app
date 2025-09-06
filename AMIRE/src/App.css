@@ -10,8 +10,13 @@ html, body, #root {
 
   /* ASZTALI NÉZET */
   @media (min-width: 768px) {
-    max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto;
-    border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333;
+    max-width: 1200px;
+    height: 90vh;
+    max-height: 900px;
+    margin: 5vh auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
   }
 }
 
