@@ -6,7 +6,7 @@
       "destination": "/api/backend"
     },
     {
-      "source": "/((?!api/).*)",
+      "source": "/(.*)",
       "destination": "/AMIRE/index.html"
     }
   ]

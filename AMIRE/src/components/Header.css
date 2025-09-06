@@ -12,7 +12,7 @@
 }
 
 .header-logo {
-  height: 40px; /* A logó magassága, ezt állítsd be a saját logódhoz */
+  height: 20px; /* A logó magassága, ezt állítsd be a saját logódhoz */
   width: auto;  /* A szélesség automatikusan méreteződik */
   display: block; /* Eltávolítja az alsó kis extra helyet */
 }
