@@ -1,16 +1,24 @@
-/* src/components/Header.css */
+/* src/components/Header.css (VÉGLEGES, RÖGZÍTETT VERZIÓ) */
+
 .app-header {
-  flex-shrink: 0; /* Megakadályozza, hogy a tartalom összenyomja */
+  position: fixed; /* A KULCS: Odaragasztjuk a képernyő tetejére */
+  top: 0;
+  left: 0;
+  right: 0; /* Automatikusan kitölti a szélességet */
+  z-index: 100; /* Biztosítjuk, hogy minden más felett legyen */
+  
   height: 60px; /* Fix magasság */
-  z-index: 10;
-  width: 100%;
   padding-top: env(safe-area-inset-top); /* iPhone notch kezelése */
-  background-color: var(--app-background-color);
-  border-bottom: 1px solid var(--border-color);
+  
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--app-background-color);
+  border-bottom: 1px solid var(--border-color);
 }
+
 .header-logo {
-  height: 20px; width: auto; display: block;
+  height: 40px;
+  width: auto;
+  display: block;
 }

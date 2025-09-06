@@ -1,21 +1,40 @@
-/* src/App.css (VÉGLEGES, ATOMBIZTOS VERZIÓ) */
+/* src/App.css (VÉGLEGES, STABIL VERZIÓ) */
 
 html, body, #root {
   height: 100%; margin: 0; padding: 0; background-color: #121212; font-family: 'Inter', sans-serif;
 }
+
 .App {
-  display: flex; flex-direction: column; height: 100dvh; width: 100%; margin: 0;
-  background-color: var(--app-background-color); overflow: hidden;
+  height: 100dvh; width: 100%; margin: 0; background-color: var(--app-background-color);
+  overflow: hidden;
+
+  /* ASZTALI NÉZET */
   @media (min-width: 768px) {
     max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto;
     border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333;
   }
 }
+
+/* KÖZÉPSŐ TERÜLET (Sidebar + Tartalom) */
+/* Ez a div már nem felel a padding-ért, csak a belső elrendezésért */
 .main-content-area {
-  flex-grow: 1; /* A KULCS: Kitölti az összes maradék helyet */
-  display: flex; width: 100%; overflow: hidden; /* Ez a réteg sem görgethető */
+  height: 100%; width: 100%; display: flex;
 }
+
+/* A GÖRGETHETŐ TARTALOM */
 .app-content {
-  flex-grow: 1; overflow-y: auto; /* CSAK EZ GÖRGETHETŐ */
-  padding: 20px; background-color: var(--background-secondary);
+  flex-grow: 1;
+  overflow-y: auto; /* Csak ez az elem görgethető */
+
+  /* A LEGFONTOSABB RÉSZ: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
+  padding-top: 60px;  /* Pontosan a fejléc magassága */
+  padding-bottom: 65px; /* Pontosan a lábléc magassága */
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: var(--background-secondary);
+  
+  /* Asztali nézetben a lábléc eltűnik, így az alsó padding felesleges */
+  @media (min-width: 768px) {
+    padding-bottom: 20px; /* Visszaállítjuk egy normál értékre */
+  }
 }
