@@ -1,16 +1,16 @@
 /* src/components/Header.css */
-/* Itt CSAK a belső elrendezés és kinézet van, NINCS position, top, left, stb. */
 .app-header {
+  flex-shrink: 0; /* Megakadályozza, hogy a tartalom összenyomja */
+  height: 60px; /* Fix magasság */
+  z-index: 10;
+  width: 100%;
+  padding-top: env(safe-area-inset-top); /* iPhone notch kezelése */
+  background-color: var(--app-background-color);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px; /* Fix magasság */
-  padding-left: 20px;
-  padding-right: 20px;
 }
-
 .header-logo {
-  height: 20px;
-  width: auto;
-  display: block;
+  height: 20px; width: auto; display: block;
 }

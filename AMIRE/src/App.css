@@ -1,70 +1,21 @@
-/* src/App.css (VÉGLEGES, STABIL FLEXBOX ELRENDEZÉS) */
+/* src/App.css (VÉGLEGES, ATOMBIZTOS VERZIÓ) */
 
-/* --- ALAP BEÁLLÍTÁSOK --- */
 html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
-  font-family: 'Inter', sans-serif;
-  overscroll-behavior-y: contain; /* Nincs böngésző oldali túlgörgetés effekt */
+  height: 100%; margin: 0; padding: 0; background-color: #121212; font-family: 'Inter', sans-serif;
 }
-
-/* --- A FŐ ALKALMAZÁS KONTÉNER (A "TELEFON KERET") --- */
 .App {
-  display: flex;
-  flex-direction: column; /* A gyerek elemek (Header, Main, Footer) egymás alá kerülnek */
-  height: 100dvh; /* A dinamikus, látható magasságot használjuk */
-  width: 100%;
-  margin: 0;
-  background-color: var(--app-background-color);
-  overflow: hidden; /* A KULCS: Ez a konténer SOHA nem görgethető */
-
-  /* ASZTALI NÉZET */
+  display: flex; flex-direction: column; height: 100dvh; width: 100%; margin: 0;
+  background-color: var(--app-background-color); overflow: hidden;
   @media (min-width: 768px) {
-    max-width: 1200px;
-    height: 90vh;
-    max-height: 900px;
-    margin: 5vh auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
+    max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto;
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333;
   }
 }
-
-/* --- FEJLÉC ÉS LÁBLÉC ÁLTALÁNOS BEÁLLÍTÁSAI --- */
-.app-header, .app-footer {
-  flex-shrink: 0; /* Megakadályozzuk, hogy összenyomódjanak */
-  z-index: 10;
-  width: 100%;
-  background-color: var(--app-background-color);
-}
-
-.app-header {
-  padding-top: env(safe-area-inset-top); /* iPhone notch kezelése */
-  border-bottom: 1px solid var(--border-color);
-}
-
-.app-footer {
-  padding-bottom: env(safe-area-inset-bottom); /* iPhone "home bar" kezelése */
-  border-top: 1px solid var(--border-color);
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
-
-/* --- KÖZÉPSŐ, FŐ TERÜLET --- */
 .main-content-area {
-  flex-grow: 1; /* A KULCS: Kitölti az ÖSSZES maradék helyet */
-  display: flex;
-  width: 100%;
-  overflow: hidden; /* Ez a réteg sem görgethető, hogy a Sidebar fixen maradjon */
+  flex-grow: 1; /* A KULCS: Kitölti az összes maradék helyet */
+  display: flex; width: 100%; overflow: hidden; /* Ez a réteg sem görgethető */
 }
-
-/* GÖRGETHETŐ TARTALOM */
 .app-content {
-  flex-grow: 1;
-  overflow-y: auto; /* CSAK ÉS KIZÁRÓLAG EZ A RÉSZ GÖRGETHETŐ! */
-  padding: 20px;
-  background-color: var(--background-secondary);
+  flex-grow: 1; overflow-y: auto; /* CSAK EZ GÖRGETHETŐ */
+  padding: 20px; background-color: var(--background-secondary);
 }
