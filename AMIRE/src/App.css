@@ -1,28 +1,25 @@
-/* src/App.css (VÉGLEGES, GÖRGÉS-BIZTOS VERZIÓ) */
+/* src/App.css (VÉGLEGES, POSITION:FIXED ALAPÚ, STABIL VERZIÓ) */
 
 /* --- ALAP BEÁLLÍTÁSOK --- */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #121212; /* Sötét háttér a teljes oldalnak */
+  background-color: #121212;
   font-family: 'Inter', sans-serif;
-  /* Megakadályozza a böngésző saját "lehúzásra frissítés" funkcióját */
-  overscroll-behavior-y: contain; 
+  overscroll-behavior-y: contain;
 }
 
 /* --- A FŐ ALKALMAZÁS KONTÉNER --- */
 .App {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  margin: 0;
   background-color: var(--app-background-color);
-  
-  /* A KULCS: A konténer magassága a dinamikus, látható területhez igazodik */
-  height: 100dvh; 
-  /* Megakadályozzuk, hogy a konténer maga görgethető legyen */
-  overflow: hidden; 
+  overflow: hidden;
 
-  /* ASZTALI NÉZET (ha a képernyő szélesebb, mint 480px) */
+  /* ASZTALI NÉZET */
   @media (min-width: 481px) {
     max-width: 450px;
     height: 90vh;
@@ -34,42 +31,54 @@ html, body, #root {
   }
 }
 
-/* --- KÖZÉPSŐ, FŐ TERÜLET (Sidebar + Tartalom) --- */
+/* --- FŐ TARTALOM TERÜLET (Sidebar + görgethető rész) --- */
+/* Ez a rész már nem flex-grow, mert a Header/Footer fixen van pozicionálva */
 .main-content-area {
-  flex-grow: 1; /* Kitölti a maradék helyet a fejléc és a lábléc között */
-  display: flex;
+  height: 100%;
   width: 100%;
-  overflow: hidden; /* Ez a réteg sem görgethető, hogy a Sidebar is fixen maradjon */
+  display: flex;
 }
 
-/* FŐ TARTALOM TERÜLET (ahol a Route-ok megjelennek) */
+/* GÖRGETHETŐ TARTALOM */
 .app-content {
   flex-grow: 1;
-  /* CSAK ÉS KIZÁRÓLAG EZ A RÉSZ GÖRGETHETŐ! */
-  overflow-y: auto; 
-  padding: 20px;
+  overflow-y: auto;
+
+  /* A KULCS: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
+  /* Ezeket az értékeket finomhangolhatod, ha szükséges */
+  padding-top: 70px;  /* Hely a fejlécnek + egy kis extra tér */
+  padding-bottom: 85px; /* Hely a láblécnek + egy kis extra tér */
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: var(--background-secondary);
 }
 
-/* --- LÁBLÉC / NAVIGÁCIÓS SÁV (MOBILON) --- */
+/* --- LÁBLÉC / NAVIGÁCIÓS SÁV --- */
 .app-footer {
-  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  
+  /* Helyet hagyunk az iPhone alsó sávjának ("home bar") */
+  padding-bottom: env(safe-area-inset-bottom);
+
+  /* A te meglévő stílusaid */
+  width: auto;
   background-color: var(--app-background-color);
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-shrink: 0;
-  z-index: 10;
-  padding-bottom: env(safe-area-inset-bottom);
-  height: 65px; /* Opcionális: a magasságot fixen tarthatjuk */
+  height: 65px;
 
-  /* A lábléc eltüntetése asztali nézetben, ahol a Sidebar van */
   @media (min-width: 768px) {
     display: none;
   }
 }
 
+/* --- IKON "BERAGADÁS" ÉS MÉRET JAVÍTÁSA --- */
 .footer-nav-item {
   flex: 1;
   padding: 8px 0;
@@ -79,10 +88,25 @@ html, body, #root {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s, transform 0.1s; /* Átmenet hozzáadva */
 }
 
+/* Aktív állapot */
 .footer-nav-item.active {
-  color: #FFFFFF;
+  color: #FFFFFF; /* Fehér szín */
+  font-weight: 600;
+}
+
+/* Kattintás effektus */
+.footer-nav-item:active {
+  transform: scale(0.95);
+}
+
+/* Ikon és szöveg méretek */
+.footer-nav-item .icon {
+  font-size: 1.6em;
+}
+
+.footer-nav-item .text {
   font-size: 0.7em;
 }
