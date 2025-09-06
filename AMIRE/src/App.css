@@ -1,112 +1,16 @@
-/* src/App.css (VÉGLEGES, POSITION:FIXED ALAPÚ, STABIL VERZIÓ) */
+/* src/App.css (VÉGLEGES, CSAK ELRENDEZÉS VERZIÓ) */
 
-/* --- ALAP BEÁLLÍTÁSOK --- */
 html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #121212;
-  font-family: 'Inter', sans-serif;
-  overscroll-behavior-y: contain;
+  height: 100%; margin: 0; padding: 0; background-color: #121212; font-family: 'Inter', sans-serif; overscroll-behavior-y: contain;
 }
-
-/* --- A FŐ ALKALMAZÁS KONTÉNER --- */
 .App {
-  position: relative;
-  height: 100dvh;
-  width: 100%;
-  margin: 0;
-  background-color: var(--app-background-color);
-  overflow: hidden;
-
-  /* ASZTALI NÉZET */
-  @media (min-width: 481px) {
-    max-width: 450px;
-    height: 90vh;
-    max-height: 900px;
-    margin: 5vh auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
-  }
+  position: relative; display: flex; flex-direction: column; height: 100dvh; width: 100%; margin: 0; background-color: var(--app-background-color); overflow: hidden;
+  @media (min-width: 768px) { max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333; }
 }
-
-/* --- FŐ TARTALOM TERÜLET (Sidebar + görgethető rész) --- */
-/* Ez a rész már nem flex-grow, mert a Header/Footer fixen van pozicionálva */
 .main-content-area {
-  height: 100%;
-  width: 100%;
-  display: flex;
+  width: 100%; height: 100%; display: flex; padding-top: 60px; /* Hely a fejlécnek */ padding-bottom: 65px; /* Hely a láblécnek */
+  @media (min-width: 768px) { padding-bottom: 0; }
 }
-
-/* GÖRGETHETŐ TARTALOM */
 .app-content {
-  flex-grow: 1;
-  overflow-y: auto;
-
-  /* A KULCS: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
-  /* Ezeket az értékeket finomhangolhatod, ha szükséges */
-  padding-top: 70px;  /* Hely a fejlécnek + egy kis extra tér */
-  padding-bottom: 85px; /* Hely a láblécnek + egy kis extra tér */
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: var(--background-secondary);
-}
-
-/* --- LÁBLÉC / NAVIGÁCIÓS SÁV --- */
-.app-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  
-  /* Helyet hagyunk az iPhone alsó sávjának ("home bar") */
-  padding-bottom: env(safe-area-inset-bottom);
-
-  /* A te meglévő stílusaid */
-  width: auto;
-  background-color: var(--app-background-color);
-  border-top: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 65px;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
-
-/* --- IKON "BERAGADÁS" ÉS MÉRET JAVÍTÁSA --- */
-.footer-nav-item {
-  flex: 1;
-  padding: 8px 0;
-  color: var(--text-light-color);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s, transform 0.1s; /* Átmenet hozzáadva */
-}
-
-/* Aktív állapot */
-.footer-nav-item.active {
-  color: #FFFFFF; /* Fehér szín */
-  font-weight: 600;
-}
-
-/* Kattintás effektus */
-.footer-nav-item:active {
-  transform: scale(0.95);
-}
-
-/* Ikon és szöveg méretek */
-.footer-nav-item .icon {
-  font-size: 1.6em;
-}
-
-.footer-nav-item .text {
-  font-size: 0.7em;
+  flex-grow: 1; overflow-y: auto; padding: 20px; background-color: var(--background-secondary);
 }

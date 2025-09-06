@@ -1,64 +1,45 @@
-/* src/components/Sidebar.css */
+/* src/components/Sidebar.css (VÉGLEGES, ÖSSZEFÉSÜLT VERZIÓ) */
+
+/* A Sidebar konténere */
 .app-sidebar {
-  width: 220px;
-  background-color: #1616161a; /* Ugyanaz a szín, mint a háttér */
-  color: #E0E0E0;
-  height: 100%;
-  padding: 20px 0;
-  /* Eltávolítjuk a box-shadow-t, mert függőleges vonalat akarunk */
-  /* box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2); */ 
-  z-index: 50;
-  display: none;
+  display: none; /* Alapból rejtve van mobil nézetben */
 
-  /* ÚJ: Függőleges elválasztó vonal */
-  border-right: 1px solid #353535; /* Halványabb szürke vonal */
-
+  /* Asztali nézetben jelenik meg (a töréspont megegyezik a lábléc eltüntetésével) */
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    position: relative;
+    width: 240px; /* Fix szélesség */
+    flex-shrink: 0; /* Megakadályozza, hogy összenyomódjon */
+    background-color: var(--app-background-color); /* Használjuk a fő háttérszínt */
+    border-right: 1px solid var(--border-color); /* Finom elválasztó vonal */
+    padding: 20px 10px; /* Térköz fent/lent és oldalt */
   }
 }
 
-.sidebar-header {
-  /* TÖRÖLJÜK A FEJLÉC STÍLUSAIT, mert nem kell a felirat és a vonal */
-  /* padding: 0 20px 20px 20px;
-  font-size: 1.2em;
-  font-weight: bold;
-  border-bottom: 1px solid #555;
-  margin-bottom: 20px; */
-  display: none; /* TELJESEN ELTÜNTETJÜK A FEJLÉCET */
-}
-
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 20px; /* Új padding, hogy ne tapadjon felülre */
-}
-
+/* Navigációs linkek a Sidebar-ban */
 .sidebar-nav-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 15px; /* Térköz az ikon és a szöveg között */
   padding: 12px 20px;
-  color: #E0E0E0;
+  border-radius: 8px; /* Lekerekített sarkok */
   text-decoration: none;
+  color: var(--text-light-color); /* Világosszürke alap szín */
   font-size: 1em;
+  font-weight: 500;
   transition: background-color 0.2s, color 0.2s;
-  border-left: 5px solid transparent;
+  border-left: 5px solid transparent; /* Ezt használjuk az aktív jelöléshez, de alapból átlátszó */
 }
 
 .sidebar-nav-item:hover {
-  background-color: #555;
+  background-color: #3a3a3e; /* Finom háttérszín hover-re */
   color: white;
 }
 
 .sidebar-nav-item.active {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color); /* Lila háttér az aktívnak */
   color: white;
-  border-left: 5px solid var(--primary-light);
-  font-weight: 500;
+  border-left-color: var(--primary-light); /* Világosabb lila csík bal oldalt */
 }
 
 .sidebar-nav-item .icon {

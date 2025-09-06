@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Link és útvonal lekérdezéséhez
 import { FaHome, FaTasks, FaCalendarAlt, FaUsers } from 'react-icons/fa'; // Ikonok
+import './Footer.css'; // A stílusokhoz szükségünk lesz egy CSS fájlra
 
 function Footer() {
   const location = useLocation(); // Az aktuális URL útvonalat lekérdezzük

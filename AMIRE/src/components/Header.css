@@ -1,31 +1,8 @@
-/* src/components/Header.css (JAVÍTOTT, POSITION:FIXED VERZIÓ) */
-
+/* src/components/Header.css */
 .app-header {
-  /* --- POZICIONÁLÁS --- */
-  position: fixed; /* Odaragasztjuk a képernyő tetejére */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000; /* Biztosítjuk, hogy minden más felett legyen */
-
-  /* --- SÁVOK KEZELÉSE (IPHONE) --- */
-  /* Helyet hagyunk a felső sávnak (óra, kamera-sziget) */
+  position: absolute; top: 0; left: 0; width: 100%; height: 60px; z-index: 10;
   padding-top: env(safe-area-inset-top);
-
-  /* A te meglévő stílusaid */
-  width: auto; /* A szélesség automatikus lesz a left:0, right:0 miatt */
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 10px;
-  background-color: var(--app-background-color);
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
+  background-color: var(--app-background-color); border-bottom: 1px solid var(--border-color);
 }
-
-.header-logo {
-  height: 20px;
-  width: auto;
-  display: block;
-}
+.header-logo { height: 20px; width: auto; display: block; }
