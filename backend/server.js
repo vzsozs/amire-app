@@ -11,13 +11,27 @@ const PORT = 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-const creds = require('./credentials.json');
+// EZ AKKOR KELL HA SAJÁT GÉPEMEN FUTTATOM
+/*const creds = require('./credentials.json');
 const serviceAccountAuth = new JWT({
   email: creds.client_email,
   key: creds.private_key,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+
+  const SPREADSHEET_ID = '1Hcs7OHUPgAsFcBojNSTEh5bN6snZaYA6QBGuZJR-hwA';
+});*/
+
+// EZ AKKOR HA A VERCEL.COM-on
+const serviceAccountAuth = new JWT({
+  email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  // A Vercel-en a '\n' karakterek valódi sortörésekké válnak, ezt vissza kell alakítani
+  key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
-const SPREADSHEET_ID = '1Hcs7OHUPgAsFcBojNSTEh5bN6snZaYA6QBGuZJR-hwA';
+
+const SPREADSHEET_ID = process.env.GOOGLE_SPREADSHEET_ID;
+
+
 const doc = new GoogleSpreadsheet(SPREADSHEET_ID, serviceAccountAuth);
 
 // --- SEGÉDFÜGGVÉNYEK ---
