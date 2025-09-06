@@ -24,8 +24,8 @@ const serviceAccountAuth = new JWT({
 // EZ AKKOR HA A VERCEL.COM-on
 const serviceAccountAuth = new JWT({
   email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-  // A Vercel-en a '\n' karakterek valódi sortörésekké válnak, ezt vissza kell alakítani
-  key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  // Ellenőrizzük, hogy létezik-e a kulcs, mielőtt a replace-t hívnánk
+  key: process.env.GOOGLE_PRIVATE_KEY ? process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 
