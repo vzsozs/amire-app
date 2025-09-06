@@ -1,14 +1,14 @@
-// src/components/Header.jsx
+// src/components/Header.jsx (LOGÓVAL FRISSÍTVE)
 import React from 'react';
-// FaBars már nem kell, töröljük az importját
-// import { FaBars } from 'react-icons/fa'; 
+import { NavLink } from 'react-router-dom'; // Használjunk NavLink-et, hogy a logó is link legyen
+import './Header.css'; // A stílusokhoz szükségünk lesz egy CSS fájlra
 
 function Header() {
   return (
     <header className="app-header">
-      <span>AMIRE</span>
-      {/* TÖRÖLJÜK A HAMBURGER MENÜ IKONT */}
-      {/* <FaBars style={{ fontSize: '1.2em', color: 'var(--text-color)' }} /> */}
+      <NavLink to="/">
+        <img src="/logo.svg" alt="AMIRE logó" className="header-logo" />
+      </NavLink>
     </header>
   );
 }

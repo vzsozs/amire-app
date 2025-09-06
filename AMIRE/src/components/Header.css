@@ -1,0 +1,18 @@
+/* src/components/Header.css */
+.app-header {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: var(--app-background-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center; /* A logót középre igazítja */
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.header-logo {
+  height: 40px; /* A logó magassága, ezt állítsd be a saját logódhoz */
+  width: auto;  /* A szélesség automatikusan méreteződik */
+  display: block; /* Eltávolítja az alsó kis extra helyet */
+}

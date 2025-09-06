@@ -33,19 +33,6 @@ html, body, #root {
   }
 }
 
-/* --- FEJLÉC --- */
-.app-header {
-  width: 100%;
-  padding: 10px 20px;
-  background-color: var(--app-background-color);
-  font-family: 'Swanky and Moo Moo', cursive;
-  text-align: center;
-  font-size: 1.8em;
-  border-bottom: 1px solid var(--border-color);
-  flex-shrink: 0; /* Megakadályozza, hogy összenyomódjon */
-  z-index: 10;
-}
-
 /* --- KÖZÉPSŐ, FŐ TERÜLET (Sidebar + Tartalom) --- */
 .main-content-area {
   flex-grow: 1; /* Kitölti a maradék helyet a fejléc és a lábléc között */
