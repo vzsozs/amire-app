@@ -4,7 +4,7 @@ import { JobContext } from './JobContext';
 import { useToast } from './useToast';
 import moment from 'moment';
 
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = '/api';
 
 export const JobProvider = ({ children }) => {
   const [jobs, setJobs] = useState([]);

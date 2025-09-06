@@ -1,6 +1,6 @@
 # Függőségek
 /AMIRE/node_modules
-/backend/node_modules
+/api/backend/node_modules
 
 # Vite build kimenet
 /AMIRE/dist
@@ -18,3 +18,9 @@ yarn-error.log*
 
 # VSCode beállítások
 .vscode/
+
+# Saját fájlok
+AMIRE_local.zip
+AMIRE_my_server.zip
+AMIRE_versel-render-II-Auth-OK_munka-NemMegy.zip
+AMIRE_versel-render.zip
