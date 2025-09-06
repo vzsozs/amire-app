@@ -2,6 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Csatoljuk a manifeszt fájlt -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Beállítjuk a téma színét (a böngésző felső sávjának színe) -->
+    <meta name="theme-color" content="#1e1e24" />
+
+    <!-- --- Apple / iOS Specifikus Beállítások --- -->
+    <!-- Engedélyezi a teljes képernyős módot -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Az állapotsáv (óra, térerő) színe -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Az alkalmazás neve a főképernyőn -->
+    <meta name="apple-mobile-web-app-title" content="AMIRE" />
+    <!-- Ikon az Apple eszközökhöz -->
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AMIRE</title>

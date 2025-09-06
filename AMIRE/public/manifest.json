@@ -1,0 +1,21 @@
+{
+  "name": "AMIRE Alkalmazás",
+  "short_name": "AMIRE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1e24",
+  "theme_color": "#1e1e24",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
