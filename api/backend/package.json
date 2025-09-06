@@ -14,11 +14,9 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "googleapis": "^140.0.0",
     "google-auth-library": "^10.3.0",
     "google-spreadsheet": "^5.0.2",
     "nodemon": "^3.0.1"
-  },
-  "overrides": {
-    "ky": "0.33.3"
   }
 }
