@@ -1,5 +1,15 @@
 {
   "version": 2,
+  "routes": [
+    {
+      "src": "/(.*\\.(ico|png|svg|jpg|jpeg|gif))",
+      "dest": "/AMIRE/public/$1"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/AMIRE/public/manifest.json"
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -7,7 +17,7 @@
     },
     {
       "source": "/((?!api/).*)",
-      "destination": "/index.html"
+      "destination": "/AMIRE/index.html"
     }
   ]
 }
