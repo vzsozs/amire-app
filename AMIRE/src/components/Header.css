@@ -1,8 +1,16 @@
 /* src/components/Header.css */
+/* Itt CSAK a belső elrendezés és kinézet van, NINCS position, top, left, stb. */
 .app-header {
-  position: absolute; top: 0; left: 0; width: 100%; height: 60px; z-index: 10;
-  padding-top: env(safe-area-inset-top);
-  display: flex; justify-content: center; align-items: center;
-  background-color: var(--app-background-color); border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Fix magasság */
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.header-logo { height: 20px; width: auto; display: block; }
+
+.header-logo {
+  height: 20px;
+  width: auto;
+  display: block;
+}

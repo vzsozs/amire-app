@@ -1,16 +1,40 @@
-/* src/components/Footer.css */
-.app-footer {
-  position: absolute; bottom: 0; left: 0; width: 100%; height: 65px; z-index: 10;
-  padding-bottom: env(safe-area-inset-bottom);
-  display: flex; justify-content: space-around; align-items: center;
-  background-color: var(--app-background-color); border-top: 1px solid var(--border-color);
-  @media (min-width: 768px) { display: none; }
-}
+/* src/components/Footer.css (LETISZTÍTOTT VERZIÓ) */
+
+/* Csak a lábléc BELSŐ elemeinek stílusai vannak itt. */
+
 .footer-nav-item {
-  flex: 1; padding: 8px 0; color: var(--text-light-color); text-decoration: none; display: flex;
-  flex-direction: column; align-items: center; gap: 4px; transition: color 0.2s, transform 0.1s;
+  flex: 1; /* A gombok egyenlően osztoznak a helyen */
+  padding: 8px 0;
+  color: var(--text-light-color);
+  text-decoration: none;
+  
+  /* Belső elrendezés (ikon és szöveg) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px; /* Térköz az ikon és a szöveg között */
+
+  /* Átmenetek a finomabb felhasználói élményért */
+  transition: color 0.2s, transform 0.1s;
 }
-.footer-nav-item.active { color: #FFFFFF; font-weight: 600; }
-.footer-nav-item:active { transform: scale(0.95); }
-.footer-nav-item .icon { font-size: 1.6em; }
-.footer-nav-item .text { font-size: 0.7em; }
+
+/* Az aktív menüpont stílusa */
+.footer-nav-item.active {
+  color: #FFFFFF; /* Fehér szín */
+  font-weight: 600;
+}
+
+/* Kattintás (érintés) effektus */
+.footer-nav-item:active {
+  transform: scale(0.95);
+}
+
+/* Az ikon mérete */
+.footer-nav-item .icon {
+  font-size: 1.6em;
+}
+
+/* A szöveg mérete */
+.footer-nav-item .text {
+  font-size: 0.7em;
+}
