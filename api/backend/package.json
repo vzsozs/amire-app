@@ -16,7 +16,9 @@
     "express": "^4.18.2",
     "google-auth-library": "^10.3.0",
     "google-spreadsheet": "^5.0.2",
-    "ky": "0.33.3",
     "nodemon": "^3.0.1"
+  },
+  "overrides": {
+    "ky": "0.33.3"
   }
 }
