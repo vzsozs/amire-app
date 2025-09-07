@@ -14,7 +14,7 @@
 
   /* Betűtípusok - a referencia kép alapján valószínűleg egy Google Font (pl. Roboto vagy Poppins) */
   /* Most az Inter-t használjuk, de később könnyen cserélhető */
-  font-family: 'Nunito Sans', sans-serif; /* VÁLTOZÁS */
+  font-family: 'Inter', sans-serif; /* Javaslom az Inter-t a Nunito Sans helyett a jobb olvashatóságért */
   line-height: 1.5;
   font-weight: 400;
 
@@ -28,30 +28,26 @@
   -webkit-text-size-adjust: 100%; /* Mobil böngészőknél a szövegméret fixálása */
 }
 
-/* Reset alapstílusok */
-*,
-*::before,
-*::after {
+/* --- ALAP BEÁLLÍTÁSOK --- */
+*, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html, body, #root {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
+  background-color: #121212; /* A keret körüli háttér */
   margin: 0;
-  display: flex;
-  justify-content: center; /* Horizontálisan középre igazítás */
-  align-items: center; /* Vertikálisan középre igazítás */
   min-width: 320px;
-  min-height: 100vh;
   background-color: var(--background-color);
   color: var(--text-color);
   overflow: hidden; /* Ne legyen scroll a body-n, csak az app-on belül */
+  overscroll-behavior-y: contain; /* Nincs böngésző oldali túlgörgetés effekt */
 }
 
 /* Általános link stílusok */

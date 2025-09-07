@@ -1,15 +1,18 @@
-/* src/components/Header.css (LETISZTÍTOTT VERZIÓ) */
+/* src/components/Header.css */
 .app-header {
-  /* Itt már NINCS position, top, left, z-index, stb. Az App.css kezeli! */
-  width: 100%;
-  height: 100%; /* Kitölti a grid által adott 60px-es helyet */
+  flex-shrink: 0; /* Megakadályozza, hogy a tartalom összenyomja */
+  height: 60px; /* Fix magasság */
   padding-top: env(safe-area-inset-top);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--app-background-color);
   border-bottom: 1px solid var(--border-color);
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .header-logo {
-  height: 20px; width: auto; display: block;
+  height: 20px;
+  width: auto;
+  display: block;
 }

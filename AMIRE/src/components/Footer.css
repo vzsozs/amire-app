@@ -1,16 +1,17 @@
-/* src/components/Footer.css (LETISZTÍTOTT VERZIÓ) */
+/* src/components/Footer.css */
 .app-footer {
-  /* Itt már NINCS position, bottom, left, z-index, stb. Az App.css kezeli! */
-  width: 100%;
-  height: 100%; /* Kitölti a grid által adott 65px-es helyet */
+  flex-shrink: 0;
+  height: 65px;
   padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: var(--app-background-color);
   border-top: 1px solid var(--border-color);
+  @media (min-width: 768px) {
+    display: none;
+  }
 }
-/* A .footer-nav-item stílusok változatlanul maradhatnak */
 .footer-nav-item {
   flex: 1; padding: 8px 0; color: var(--text-light-color); text-decoration: none; display: flex;
   flex-direction: column; align-items: center; gap: 4px; transition: color 0.2s, transform 0.1s;
