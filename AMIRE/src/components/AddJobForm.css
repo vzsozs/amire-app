@@ -52,6 +52,10 @@
     height: 50px;
 }
 
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 .form-group textarea {
   min-height: 100px;
   resize: vertical;
