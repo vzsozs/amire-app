@@ -1,16 +1,16 @@
 /* src/index.css */
 /* Globális CSS változók a színekhez - könnyebb módosítani később */
 :root {
-  --primary-color: #6200EE; /* Fő akcentus szín (sötét lila) */
-  --primary-light: #BB86FC; /* Világosabb lila (pl. gombok hover állapota) */
-  --secondary-color: #03DAC6; /* Másodlagos akcentus szín (türkiz) */
-  --background-color: #F8F8F8; /* Világos szürke háttér az app KÖRÉ */
-  --app-background-color: #FFFFFF; /* Tiszta fehér az app belsejében */
-  --text-color: #333333; /* Sötétszürke szöveg */
-  --text-light-color: #666666; /* Világosabb szürke szöveg */
-  --border-color: #EEEEEE; /* Világos szürke keret/elválasztó */
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1); /* Enyhe árnyék */
-  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15); /* Közepes árnyék */
+  --background-color: #121212; /* A keret körüli háttér */
+  --app-background-color: #242424; /* Az app belseje */
+  --background-secondary: #1e1e24; /* A tartalom háttere */
+  --text-color: #E0E0E0;
+  --text-light-color: #AAAAAA;
+  --border-color: #444444;
+  --primary-color: #BB86FC; /* Világosabb lila sötét háttéren */
+  --primary-light: #d8b8ff;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.3);
 
   /* Betűtípusok - a referencia kép alapján valószínűleg egy Google Font (pl. Roboto vagy Poppins) */
   /* Most az Inter-t használjuk, de később könnyen cserélhető */
