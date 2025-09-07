@@ -78,7 +78,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
 
       {/* --- AKTUÁLIS TEENDŐK KÁRTYA (ÚJ NÉV) --- */}
       <div className="dashboard-card notes-card">
-        <h2 className="card-title">Aktuális Teendők</h2> {/* ÚJ CÍM */}
+        <h2 className="card-title">Mai Teendők</h2> {/* ÚJ CÍM */}
         <div className="notes-list"> {/* Újrahasználjuk a notes-list osztályt */}
           {uncompletedTodosToday.length > 0 ? (
             uncompletedTodosToday.map(todo => (
@@ -98,7 +98,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
       </div>
 
       <div className="dashboard-card">
-        <h2 className="card-title">Aktív Projektek ({activeJobs.length})</h2>
+        <h2 className="card-title">Mai Projektek ({activeJobs.length})</h2>
         <div className="job-list-mini">
           {activeJobs.length > 0 ? (
             activeJobs.slice(0, 3).map(job => (
@@ -110,7 +110,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
           ) : (
             <EmptyState 
               icon={<FaTasks />} 
-              title="Nincs aktív projekt" 
+              title="Ma pihenünk" 
               message="Jelenleg nincsenek folyamatban lévő munkák." 
             />
           )}

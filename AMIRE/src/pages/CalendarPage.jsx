@@ -104,7 +104,7 @@ function CalendarPage() {
       <div className="calendar-page-container">
         <div className="calendar-page-header">
           <h1>Naptár</h1>
-          <p>Tekintse meg a munkák határidejét, ütemezését és a csapat elérhetőségét.</p>
+          <p>Itt látod a munkák ütemezését és a csapat elérhetőségét, esetleges határidőket.</p>
         </div>
         <div className="calendar-wrapper">
           <Calendar
@@ -145,7 +145,7 @@ function CalendarPage() {
           <div className="legend-swatch">
             <div className="legend-job-underline" style={{ backgroundColor: '#FF6F00' }}></div>
           </div>
-          <span>Aznapi munka (a szín a munkát jelöli)</span>
+          <span>Aznapi munka (a szín az aktuális munkát jelöli)</span>
         </div>
         <div className="legend-item">
           <div className="legend-swatch">

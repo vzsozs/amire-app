@@ -2,21 +2,20 @@
 
 .add-job-form h2 {
   margin-top: 0;
-  margin-bottom: 25px; /* Kicsit nagyobb térköz a cím alatt */
+  margin-bottom: 25px;
   text-align: center;
   font-size: 1.5em;
   color: var(--text-color);
 }
 
 .form-group {
-  margin-bottom: 18px; /* Egységes térköz */
+  margin-bottom: 18px;
 }
 
-/* Speciális form group a veszélyes művelethez, nagyobb alsó térközzel */
 .form-group-danger {
   margin-bottom: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #555; /* Elválasztó vonal */
+  border-bottom: 1px solid #555;
 }
 
 .form-group label {
@@ -26,6 +25,7 @@
   color: var(--text-light-color);
 }
 
+/* --- ITT TÖRTÉNIK A FŐ VÁLTOZÁS --- */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -37,6 +37,19 @@
   font-family: inherit;
   background-color: #333;
   color: #E0E0E0;
+  
+  /* Hozzáadjuk a fix magasságot, de a textarea kivételével */
+  /* A box-sizing biztosítja, hogy a padding és a border a magasságon belül maradjon */
+  box-sizing: border-box;
+}
+
+/* Külön szabály a select-re és a date input-ra, hogy a magasságuk egyezzen */
+.form-group select,
+.form-group input[type="date"],
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+    height: 50px;
 }
 
 .form-group textarea {
@@ -49,7 +62,7 @@
   gap: 15px;
 }
 .form-group-row .form-group {
-  flex: 1; /* A két mező egyenlően osztozik a helyen */
+  flex: 1;
 }
 
 .form-group input:focus,
@@ -96,8 +109,6 @@
   font-size: 0.9em;
 }
 
-/* --- GOMBOK STÍLUSAI --- */
-
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -133,7 +144,7 @@
 }
 
 .button-danger-subtle {
-  width: 100%; /* Kitölti a rendelkezésre álló helyet */
+  width: 100%;
   background-color: transparent;
   color: #dc3545;
   border: 1px solid #dc3545;
@@ -142,7 +153,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center; /* Középre igazítja a tartalmat */
+  justify-content: center;
   gap: 8px;
   font-weight: bold;
   font-size: 0.95em;
@@ -154,9 +165,6 @@
   color: white;
 }
 
-/* --- ÚJ, HOZZÁADOTT RÉSZEK --- */
-
-/* 1. A STÁTUSZ LENYÍLÓ MENÜ NYILÁNAK IGAZÍTÁSA */
 .form-group select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -168,10 +176,8 @@
   padding-right: 30px; 
 }
 
-
-/* 2. A HATÁRIDŐ NAPTÁR IKONJÁNAK SZÍNEZÉSE */
 .form-group input[type="date"] {
-    color-scheme: light;
+    color-scheme: dark; /* Ezt sötétre állítjuk, hogy a naptár is sötét legyen */
 }
 
 .form-group input[type="date"]::-webkit-calendar-picker-indicator {

@@ -26,7 +26,7 @@ function TasksPage() {
     <div className="tasks-page-container">
       <div className="tasks-page-header">
         <h1>Munkák</h1> 
-        <p>Itt láthatja és kezelheti a céges munkákat és projekteket.</p> 
+        <p>Itt vihetsz fel és kezelheted a munkákat.</p> 
       </div>
       <div className="job-list">
         {jobs.length > 0 ? (
