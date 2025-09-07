@@ -2,13 +2,13 @@
 /* Globális CSS változók a színekhez - könnyebb módosítani később */
 :root {
   --background-color: #121212; /* A keret körüli háttér */
-  --app-background-color: #242424; /* Az app belseje */
-  --background-secondary: #1e1e24; /* A tartalom háttere */
+  --app-background-color: #121212; /* Az app belseje */
+  --background-secondary: #121212; /* A tartalom háttere */
   --text-color: #E0E0E0;
   --text-light-color: #AAAAAA;
   --border-color: #444444;
-  --primary-color: #BB86FC; /* Világosabb lila sötét háttéren */
-  --primary-light: #d8b8ff;
+  --primary-color: #521111; /* Világosabb lila sötét háttéren */
+  --primary-light: #ff0000;
   --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.3);
 
@@ -105,8 +105,8 @@ p {
 /* Media query a világos/sötét módhoz (opcionális, de jó gyakorlat) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background-color: #1A1A1A;
-    --app-background-color: #242424;
+    --background-color: #121212;
+    --app-background-color: #121212;
     --text-color: #E0E0E0;
     --text-light-color: #AAAAAA;
     --border-color: #444444;
