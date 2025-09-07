@@ -28,7 +28,11 @@ body {
   scrollbar-gutter: stable;
   
 }
-.app-content > *:first-child {
+.app-content h1:first-child,
+.app-content h2:first-child,
+.app-content h3:first-child,
+.app-content p:first-child,
+.app-content div:first-child {
   margin-top: 0;
 }
 
