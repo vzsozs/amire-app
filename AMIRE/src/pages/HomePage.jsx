@@ -98,7 +98,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
       </div>
 
       <div className="dashboard-card">
-        <h2 className="card-title">Mai Projektek ({activeJobs.length})</h2>
+        <h2 className="card-title">Aktív Projektek ({activeJobs.length})</h2>
         <div className="job-list-mini">
           {activeJobs.length > 0 ? (
             activeJobs.slice(0, 3).map(job => (
