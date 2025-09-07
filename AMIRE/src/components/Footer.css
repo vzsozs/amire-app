@@ -1,31 +1,21 @@
-/* src/components/Footer.css (VÉGLEGES, RÖGZÍTETT VERZIÓ) */
-
+/* src/components/Footer.css (LETISZTÍTOTT VERZIÓ) */
 .app-footer {
-  position: fixed; /* A KULCS: Odaragasztjuk a képernyő aljára */
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-
-  height: 65px; /* Fix magasság */
-  padding-bottom: env(safe-area-inset-bottom); /* iPhone "home bar" kezelése */
-
+  /* Itt már NINCS position, bottom, left, z-index, stb. Az App.css kezeli! */
+  width: 100%;
+  height: 100%; /* Kitölti a grid által adott 65px-es helyet */
+  padding-bottom: env(safe-area-inset-bottom);
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: var(--app-background-color);
   border-top: 1px solid var(--border-color);
-
-  @media (min-width: 768px) {
-    display: none;
-  }
 }
-
+/* A .footer-nav-item stílusok változatlanul maradhatnak */
 .footer-nav-item {
   flex: 1; padding: 8px 0; color: var(--text-light-color); text-decoration: none; display: flex;
   flex-direction: column; align-items: center; gap: 4px; transition: color 0.2s, transform 0.1s;
 }
 .footer-nav-item.active { color: #FFFFFF; font-weight: 600; }
-.footer-nav-item:active { transform: scale(0.95); } /* Ikon beragadás javítása */
+.footer-nav-item:active { transform: scale(0.95); }
 .footer-nav-item .icon { font-size: 1.6em; }
 .footer-nav-item .text { font-size: 0.7em; }

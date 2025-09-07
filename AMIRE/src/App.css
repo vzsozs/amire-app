@@ -1,54 +1,39 @@
-/* src/App.css (VÉGLEGES, STABIL VERZIÓ) */
+/* src/App.css (VÉGLEGES, GRID ALAPÚ, STABIL VERZIÓ) */
 
+/* --- ALAP BEÁLLÍTÁSOK --- */
 html, body, #root {
-  height: 100%; margin: 0; padding: 0; background-color: #121212; font-family: 'Inter', sans-serif;
+  height: 100%; margin: 0; padding: 0; background-color: #121212;
+  font-family: 'Inter', sans-serif; overscroll-behavior-y: contain;
 }
 
+/* --- A FŐ ALKALMAZÁS KONTÉNER (A "TELEFON KERET") --- */
 .App {
-  position: relative; /* FONTOS: Ez kell, hogy a gyerekelemek tudjanak ehhez igazodni */
-  /* ... többi meglévő szabály ... */
-  display: flex;
-  flex-direction: column;
+  display: grid; /* A KULCS: Grid elrendezést használunk */
+  /* Létrehozunk 3 sort: a fejléc (60px), a tartalom (kitölti a maradék helyet), és a lábléc (65px) */
+  grid-template-rows: 60px 1fr 65px;
+  
   height: 100dvh;
   width: 100%;
   margin: 0;
   background-color: var(--app-background-color);
-  overflow: hidden;
+  overflow: hidden; /* A keret soha nem görgethető */
 
-
-  /* ASZTALI NÉZET */
+  /* Asztali nézetben a lábléc eltűnik, így a grid csak 2 soros lesz */
   @media (min-width: 768px) {
-    max-width: 1200px;
-    height: 90vh;
-    max-height: 900px;
-    margin: 5vh auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
-    transform: translateZ(0);
+    grid-template-rows: 60px 1fr; /* Nincs többé lábléc sor */
+    max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto;
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333;
   }
 }
 
-/* KÖZÉPSŐ TERÜLET (Sidebar + Tartalom) */
-/* Ez a div már nem felel a padding-ért, csak a belső elrendezésért */
-.main-content-area {
-  height: 100%; width: 100%; display: flex;
+/* --- AZ EGYES ELRENDEZÉSI TERÜLETEK --- */
+.app-header { grid-row: 1; /* A fejléc az 1. sorba kerül */ z-index: 10; }
+.main-content-area { grid-row: 2; /* A tartalom a 2. sorba */ overflow: hidden; display: flex; }
+.app-footer { grid-row: 3; /* A lábléc a 3. sorba */ z-index: 10; 
+  @media (min-width: 768px) { display: none; }
 }
 
-/* A GÖRGETHETŐ TARTALOM */
+/* GÖRGETHETŐ TARTALOM */
 .app-content {
-  flex-grow: 1;
-  overflow-y: auto; /* Csak ez az elem görgethető */
-
-  /* A LEGFONTOSABB RÉSZ: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
-  padding-top: 60px;  /* Pontosan a fejléc magassága */
-  padding-bottom: 65px; /* Pontosan a lábléc magassága */
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: var(--background-secondary);
-  
-  /* Asztali nézetben a lábléc eltűnik, így az alsó padding felesleges */
-  @media (min-width: 768px) {
-    padding-bottom: 20px; /* Visszaállítjuk egy normál értékre */
-  }
+  flex-grow: 1; overflow-y: auto; padding: 20px; background-color: var(--background-secondary);
 }

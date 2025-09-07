@@ -1,24 +1,15 @@
-/* src/components/Header.css (VÉGLEGES, RÖGZÍTETT VERZIÓ) */
-
+/* src/components/Header.css (LETISZTÍTOTT VERZIÓ) */
 .app-header {
-  position: fixed; /* A KULCS: Odaragasztjuk a képernyő tetejére */
-  top: 0;
-  left: 0;
-  right: 0; /* Automatikusan kitölti a szélességet */
-  z-index: 100; /* Biztosítjuk, hogy minden más felett legyen */
-  
-  height: 60px; /* Fix magasság */
-  padding-top: env(safe-area-inset-top); /* iPhone notch kezelése */
-  
+  /* Itt már NINCS position, top, left, z-index, stb. Az App.css kezeli! */
+  width: 100%;
+  height: 100%; /* Kitölti a grid által adott 60px-es helyet */
+  padding-top: env(safe-area-inset-top);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--app-background-color);
   border-bottom: 1px solid var(--border-color);
 }
-
 .header-logo {
-  height: 20px;
-  width: auto;
-  display: block;
+  height: 20px; width: auto; display: block;
 }
