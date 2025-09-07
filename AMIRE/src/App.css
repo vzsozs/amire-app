@@ -28,7 +28,11 @@ body {
   scrollbar-gutter: stable;
   
 }
-.app-content h1:first-child,
+.app-content h1:first-child {
+  margin-top: 20px; /* Állítsd be a kívánt értékre */
+  margin-bottom: 20px;
+}
+
 .app-content h2:first-child,
 .app-content h3:first-child,
 .app-content p:first-child,
