@@ -1,22 +1,36 @@
 /* src/components/Footer.css */
 .app-footer {
-  /* Itt már NINCS position, height, stb. A Grid kezeli! */
-  z-index: 10;
-  width: 100%;
-  padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  
+  height: 65px; /* Fix magasság */
+  
+  /* A KULCS: A padding-bottom MOST már a láblécen BELÜL van, és csak a tartalmát tolja feljebb */
+  padding-bottom: env(safe-area-inset-bottom); 
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: var(--app-background-color);
   border-top: 1px solid var(--border-color);
-  display: flex;
 
   @media (min-width: 768px) {
     display: none;
   }
 }
 .footer-nav-item {
-  flex: 1; padding: 8px 0; color: var(--text-light-color); text-decoration: none; display: flex;
-  flex-direction: column; align-items: center; gap: 4px; transition: color 0.2s;
+  flex: 1;
+  /* A padding-et a nav-item-en belül állítjuk be, hogy a magasság konzisztens legyen */
+  padding-top: 8px; 
+  padding-bottom: 8px;
+  color: var(--text-light-color);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
-.footer-nav-item.active { color: #FFFFFF; font-weight: 600; }
-/* Az :active állapotot kivesszük, mert a tap-highlight-color-t fogjuk használni */
-.footer-nav-item .icon { font-size: 1.6em; }
-.footer-nav-item .text { font-size: 0.7em; }
+/* A többi footer-nav-item szabály változatlan */

@@ -1,15 +1,17 @@
 /* src/components/Header.css */
 .app-header {
-  /* Itt már NINCS position, height, stb. A Grid kezeli! */
-  z-index: 10;
-  width: 100%;
-  padding: 10px 20px; /* A padding adja a magasságot */
-  padding-top: calc(10px + env(safe-area-inset-top));
-  background-color: var(--app-background-color);
-  border-bottom: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 60px; /* Fix magasság */
+  padding-top: env(safe-area-inset-top);
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--app-background-color);
+  border-bottom: 1px solid var(--border-color);
 }
 .header-logo {
   height: 20px;

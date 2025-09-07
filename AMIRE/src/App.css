@@ -1,24 +1,18 @@
-/* src/App.css (VÉGLEGES, GRID ALAPÚ, STABIL VERZIÓ) */
+/* src/App.css (VÉGLEGES, POSITION:FIXED ALAPÚ, STABIL VERZIÓ) */
 
 /* --- ALAP BEÁLLÍTÁSOK --- */
-html, body, #root, .App {
-  height: 100%; /* Minden alap konténer töltse ki a rendelkezésre álló helyet */
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* A KULCS: Semmi sem görgethető alapból */
-}
-body {
-  background-color: #121212;
-  font-family: 'Inter', sans-serif;
-  overscroll-behavior-y: contain;
+html, body, #root {
+  height: 100%; margin: 0; padding: 0; background-color: var(--app-background-color); font-family: 'Inter', sans-serif;
 }
 
-/* --- A FŐ ALKALMAZÁS KONTÉNER (A "TELEFON KERET") --- */
+/* --- A FŐ ALKALMAZÁS KONTÉNER --- */
 .App {
-  display: grid;
-  /* 3 SOR: Fejléc (fix), Tartalom (rugalmas), Lábléc (fix) */
-  grid-template-rows: auto 1fr auto;
+  position: relative; /* Pozicionálási kontextus a gyerekelemeknek */
+  height: 100dvh; /* A dinamikus magasságot használjuk */
+  width: 100%;
+  margin: 0;
   background-color: var(--app-background-color);
+  overflow: hidden; /* A keret soha nem görgethető */
 
   /* ASZTALI NÉZET */
   @media (min-width: 768px) {
@@ -29,19 +23,31 @@ body {
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
+    transform: translateZ(0); /* Bezárja a fixed elemeket a keretbe */
   }
 }
 
-/* --- KÖZÉPSŐ, FŐ TERÜLET --- */
+/* KÖZÉPSŐ TERÜLET (Sidebar + Tartalom) */
 .main-content-area {
+  height: 100%;
+  width: 100%;
   display: flex;
-  overflow: hidden; /* A tartalom ezen belül fog görögni */
 }
 
-/* GÖRGETHETŐ TARTALOM */
+/* A GÖRGETHETŐ TARTALOM */
 .app-content {
   flex-grow: 1;
-  overflow-y: auto; /* CSAK ÉS KIZÁRÓLAG EZ A RÉSZ GÖRGETHETŐ! */
-  padding: 20px;
+  overflow-y: auto;
+
+  /* A KULCS: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
+  padding-top: 60px;  /* Pontosan a fejléc magassága */
+  padding-bottom: calc(65px + env(safe-area-inset-bottom)); /* Lábléc magassága + biztonsági sáv */
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: var(--background-secondary);
+
+  /* Asztali nézetben a lábléc eltűnik */
+  @media (min-width: 768px) {
+    padding-bottom: 20px;
+  }
 }
