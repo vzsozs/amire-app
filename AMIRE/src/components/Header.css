@@ -1,20 +1,16 @@
 /* src/components/Header.css */
 .app-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  height: 60px; /* Fix magasság */
-  padding-top: env(safe-area-inset-top);
+  grid-row: 1; /* A Grid elrendezéshez */
+  z-index: 10;
+  width: 100%;
+  padding: 10px 20px;
+  padding-top: calc(10px + env(safe-area-inset-top));
+  background-color: var(--app-background-color);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--app-background-color);
-  border-bottom: 1px solid var(--border-color);
 }
 .header-logo {
-  height: 20px;
-  width: auto;
-  display: block;
+  height: 20px; width: auto; display: block;
 }

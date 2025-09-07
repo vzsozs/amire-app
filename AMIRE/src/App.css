@@ -1,53 +1,28 @@
-/* src/App.css (VÉGLEGES, POSITION:FIXED ALAPÚ, STABIL VERZIÓ) */
+/* src/App.css (VISSZAÁLLÍTOTT, GRID ALAPÚ, STABIL VERZIÓ) */
 
-/* --- ALAP BEÁLLÍTÁSOK --- */
-html, body, #root {
-  height: 100%; margin: 0; padding: 0; background-color: var(--app-background-color); font-family: 'Inter', sans-serif;
+html, body, #root, .App {
+  height: 100%; margin: 0; padding: 0; overflow: hidden;
 }
-
-/* --- A FŐ ALKALMAZÁS KONTÉNER --- */
+body {
+  background-color: var(--app-background-color); /* EZ A FONTOS VÁLTOZÁS! */
+  font-family: 'Inter', sans-serif;
+  overscroll-behavior-y: contain;
+}
 .App {
-  position: relative; /* Pozicionálási kontextus a gyerekelemeknek */
-  height: 100dvh; /* A dinamikus magasságot használjuk */
-  width: 100%;
-  margin: 0;
-  background-color: var(--app-background-color);
-  overflow: hidden; /* A keret soha nem görgethető */
-
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  
   /* ASZTALI NÉZET */
   @media (min-width: 768px) {
-    max-width: 1200px;
-    height: 90vh;
-    max-height: 900px;
-    margin: 5vh auto;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid #333;
-    transform: translateZ(0); /* Bezárja a fixed elemeket a keretbe */
+    grid-template-rows: auto 1fr; /* Nincs lábléc sor */
+    max-width: 1200px; height: 90vh; max-height: 900px; margin: 5vh auto;
+    border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #333;
+    background-color: var(--app-background-color); /* A keret háttere is legyen az app színe */
   }
 }
-
-/* KÖZÉPSŐ TERÜLET (Sidebar + Tartalom) */
 .main-content-area {
-  height: 100%;
-  width: 100%;
-  display: flex;
+  grid-row: 2; overflow: hidden; display: flex;
 }
-
-/* A GÖRGETHETŐ TARTALOM */
 .app-content {
-  flex-grow: 1;
-  overflow-y: auto;
-
-  /* A KULCS: Helyet hagyunk a fixen pozicionált fejlécnek és láblécnek */
-  padding-top: 60px;  /* Pontosan a fejléc magassága */
-  padding-bottom: calc(65px + env(safe-area-inset-bottom)); /* Lábléc magassága + biztonsági sáv */
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: var(--background-secondary);
-
-  /* Asztali nézetben a lábléc eltűnik */
-  @media (min-width: 768px) {
-    padding-bottom: 20px;
-  }
+  flex-grow: 1; overflow-y: auto; padding: 20px; background-color: var(--background-secondary);
 }

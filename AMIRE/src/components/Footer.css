@@ -1,21 +1,14 @@
-/* src/components/Footer.css */
+/* src/components/Footer.css (VÉGLEGES, JAVÍTOTT VERZIÓ) */
 .app-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  
-  height: 65px; /* Fix magasság */
-  
-  /* A KULCS: A padding-bottom MOST már a láblécen BELÜL van, és csak a tartalmát tolja feljebb */
-  padding-bottom: env(safe-area-inset-bottom); 
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  grid-row: 3; /* A Grid elrendezéshez */
+  z-index: 10;
+  width: 100%;
   background-color: var(--app-background-color);
   border-top: 1px solid var(--border-color);
+  display: flex;
+
+  /* A KULCS: A padding-ot a TARTALOMRA alkalmazzuk, nem a konténerre */
+  /* Így a háttérszín kitölti a teljes rendelkezésre álló helyet */
 
   @media (min-width: 768px) {
     display: none;
@@ -23,14 +16,24 @@
 }
 .footer-nav-item {
   flex: 1;
-  /* A padding-et a nav-item-en belül állítjuk be, hogy a magasság konzisztens legyen */
-  padding-top: 8px; 
-  padding-bottom: 8px;
+  padding: 8px 0;
+  /* Az alsó padding-ot, a "safe area"-t, IDE tesszük! */
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
   color: var(--text-light-color);
   text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  transition: color 0.2s;
 }
-/* A többi footer-nav-item szabály változatlan */
+.footer-nav-item.active {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+.footer-nav-item .icon {
+  font-size: 1.6em;
+}
+.footer-nav-item .text {
+  font-size: 0.7em;
+} 
