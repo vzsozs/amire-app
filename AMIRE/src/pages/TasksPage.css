@@ -1,6 +1,7 @@
 /* src/pages/TasksPage.css */
 .tasks-page-container {
   padding: 0; /* A belső padding-et az app-content kezeli, így 0-ra állítjuk */
+  padding-top: 20px; /* Vagy amekkora a másik oldalon */
   position: relative; /* A lebegő gomb pozicionálásához kell */
   height: 100%;
 }
@@ -9,6 +10,10 @@
   padding: 0 20px 20px 20px; /* Lefelé nagyobb padding, hogy elválassza a listától */
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 20px;
+}
+
+.team-page-container {
+  padding-top: 20px; /* Vagy amekkora a másik oldalon */
 }
 
 .job-list {

@@ -28,16 +28,14 @@ body {
   scrollbar-gutter: stable;
   
 }
-.app-content h1:first-child {
-  margin-top: 20px; /* Állítsd be a kívánt értékre */
-  margin-bottom: 20px;
-}
 
-.app-content h2:first-child,
-.app-content h3:first-child,
-.app-content p:first-child,
-.app-content div:first-child {
-  margin-top: 0;
+/* --- AZ OLDALAK KÜLSŐ KONTÉNEREINEK KÖZÖS STÍLUSA --- */
+/* (Ez biztosítja, hogy minden oldalnak legyen egy alapvető térköze) */
+.home-page-container,
+.tasks-page-container,
+.calendar-page-container,
+.team-page-container {
+  padding-top: 20px; /* Vagy amekkora a másik oldalon */
 }
 
 /* --- EGYEDI, SÖTÉT TÉMÁJÚ GÖRGETŐSÁV ASZTALI NÉZETBEN --- */
