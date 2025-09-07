@@ -1,0 +1,11 @@
+{
+  "name": "amire-monorepo",
+  "private": true,
+  "workspaces": [
+    "AMIRE",
+    "api/backend"
+  ],
+  "scripts": {
+    "build": "cd AMIRE && npm run build"
+  }
+}

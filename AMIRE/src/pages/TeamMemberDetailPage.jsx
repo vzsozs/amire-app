@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { TeamContext } from '../context/TeamContext';
-import { FaArrowLeft, FaSave, FaPencilAlt } from 'react-icons/fa'; // FaPencilAlt hozzáadva
+import { FaArrowLeft, FaSave, FaPencilAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Ikonok hozzáadva
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './TeamMemberDetailPage.css';
@@ -90,6 +90,14 @@ function TeamMemberDetailPage() {
         await saveTeamMemberChanges(originalMember.id, changedFields);
     }
   };
+
+   // --- ÚJ KEZELŐFÜGGVÉNYEK A NAPTÁR LAPOZÁSÁHOZ ---
+  const handlePrevMonth = () => {
+    setActiveStartDate(currentDate => new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+  };
+  const handleNextMonth = () => {
+    setActiveStartDate(currentDate => new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
+  };
   
   const handleAvailabilityDayClick = (date) => {
     const dateString = toYYYYMMDD(date);
@@ -162,6 +170,10 @@ function TeamMemberDetailPage() {
                 prev2Label={null}
                 next2Label={null}
             />
+            <div className="custom-calendar-nav-dark">
+              <button onClick={handlePrevMonth} className="custom-nav-button-dark"><FaChevronLeft /></button>
+              <button onClick={handleNextMonth} className="custom-nav-button-dark"><FaChevronRight /></button>
+            </div>
             </div>
         </div>
       </div>
