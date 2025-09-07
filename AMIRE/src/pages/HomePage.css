@@ -4,15 +4,7 @@
 }
 
 .home-header {
-  margin-bottom: 25px;
-}
-.home-header h1 {
-  margin: 0;
-  font-size: 1.8em;
-}
-.home-header p {
-  color: var(--text-light-color);
-  font-size: 1.1em;
+  margin-bottom: 20px;
 }
 
 .dashboard-card {
