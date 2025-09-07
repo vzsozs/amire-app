@@ -1,33 +1,44 @@
-/* src/App.css (VÉGLEGES, FLEXBOX ALAPÚ, STABIL VERZIÓ) */
+/* src/App.css (VÉGLEGES, GRID ALAPÚ, STABIL VERZIÓ) */
 
-.App {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Kitölti a #root-ot, ami 100% magas */
-  width: 100%;
+/* --- ALAP BEÁLLÍTÁSOK --- */
+html, body, #root, .App {
+  height: 100%; /* Minden alap konténer töltse ki a rendelkezésre álló helyet */
   margin: 0;
-  background-color: var(--app-background-color);
-  overflow: hidden; /* A keret soha nem görgethető */
+  padding: 0;
+  overflow: hidden; /* A KULCS: Semmi sem görgethető alapból */
+}
+body {
+  background-color: #121212;
+  font-family: 'Inter', sans-serif;
+  overscroll-behavior-y: contain;
+}
 
-  /* ASZTALI NÉZET: A keret középre igazítása és méretezése */
+/* --- A FŐ ALKALMAZÁS KONTÉNER (A "TELEFON KERET") --- */
+.App {
+  display: grid;
+  /* 3 SOR: Fejléc (fix), Tartalom (rugalmas), Lábléc (fix) */
+  grid-template-rows: auto 1fr auto;
+  background-color: var(--app-background-color);
+
+  /* ASZTALI NÉZET */
   @media (min-width: 768px) {
+    max-width: 1200px;
     height: 90vh;
     max-height: 900px;
-    max-width: 1200px;
-    margin: 5vh auto; /* Automatikus margó a középre igazításhoz */
+    margin: 5vh auto;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
   }
 }
 
+/* --- KÖZÉPSŐ, FŐ TERÜLET --- */
 .main-content-area {
-  flex-grow: 1; /* Kitölti az összes maradék helyet a fejléc és lábléc között */
   display: flex;
-  width: 100%;
-  overflow: hidden; /* Ez a réteg sem görgethető */
+  overflow: hidden; /* A tartalom ezen belül fog görögni */
 }
 
+/* GÖRGETHETŐ TARTALOM */
 .app-content {
   flex-grow: 1;
   overflow-y: auto; /* CSAK ÉS KIZÁRÓLAG EZ A RÉSZ GÖRGETHETŐ! */

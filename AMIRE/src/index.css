@@ -85,18 +85,21 @@ button:focus-visible {
 }
 
 /* Fejléc stílusok */
-h1 {
-  font-size: 2em; /* Kisebb H1 az appon belül */
-  line-height: 1.2;
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif; /* Használja mindenhol az új betűtípust */
   color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.5em;
 }
-h2 {
-  font-size: 1.5em;
-  color: var(--text-color);
-}
+
+h1 { font-size: 2em; line-height: 1.2; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.1em; font-weight: 500; color: var(--text-light-color); }
+
 p {
   color: var(--text-light-color);
-  margin-bottom: 0.5em;
+  margin-top: 0;
+  margin-bottom: 1em;
 }
 
 /* Media query a világos/sötét módhoz (opcionális, de jó gyakorlat) */
