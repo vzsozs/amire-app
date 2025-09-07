@@ -35,22 +35,6 @@ function TeamPage() {
         <FaPlus />
       </button>
 
-       {/* --- ITT VAN A VÁLTOZÁS --- */}
-      {/* Ternáris operátorral ellenőrizzük, hogy a 'team' tömb üres-e */}
-      <div className="team-list">
-        {team.length > 0 ? (
-          // Ha NEM üres, listázzuk a csapattagokat
-          team.map(member => <TeamMemberItem key={member.id} member={member} />)
-        ) : (
-          // Ha ÜRES, megjelenítjük az EmptyState komponenst
-          <EmptyState
-            icon={<FaUserPlus />} // Vagy bármilyen más ikont, pl. FaUsers
-            title="Nincsenek csapattagok"
-            message="Kattints a '+' gombra az első csapattag hozzáadásához!"
-          />
-        )}
-      </div>
-      
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <AddTeamMemberForm
           onCancel={() => setIsModalOpen(false)}

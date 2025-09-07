@@ -1,4 +1,4 @@
-/* src/components/AddJobForm.css (VÉGLEGES, JAVÍTOTT VERZIÓ) */
+/* src/components/AddJobForm.css (VÉGLEGES, TISZTA VERZIÓ) */
 
 .add-job-form h2 {
   margin-top: 0;
@@ -25,7 +25,6 @@
   color: var(--text-light-color);
 }
 
-/* --- ITT TÖRTÉNIK A FŐ VÁLTOZÁS --- */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -37,23 +36,15 @@
   font-family: inherit;
   background-color: #333;
   color: #E0E0E0;
-  
-  /* Hozzáadjuk a fix magasságot, de a textarea kivételével */
-  /* A box-sizing biztosítja, hogy a padding és a border a magasságon belül maradjon */
   box-sizing: border-box;
 }
 
-/* Külön szabály a select-re és a date input-ra, hogy a magasságuk egyezzen */
 .form-group select,
 .form-group input[type="date"],
 .form-group input[type="text"],
 .form-group input[type="tel"],
 .form-group input[type="email"] {
     height: 50px;
-}
-
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
 }
 
 .form-group textarea {
@@ -181,9 +172,7 @@
 }
 
 .form-group input[type="date"] {
-    color-scheme: dark; /* Ezt sötétre állítjuk, hogy a naptár is sötét legyen */
+    color-scheme: dark; /* Ez sötétre állítja a naptár felugró ablakát és az ikont is */
 }
 
-.form-group input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
+/* A filteres szabályt eltávolítottuk, mert a color-scheme már elvégzi a munkát */
