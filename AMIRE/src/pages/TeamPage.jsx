@@ -22,7 +22,7 @@ function TeamPage() {
         <div className="team-list">
           {team.length > 0 ? (
             team.map(member => ( 
-              <TeamMemberItem key={member.id} member={member} /> 
+              <TeamMemberItem key={member.id} person={member} /> 
             ))
           ) : (
             <EmptyState
