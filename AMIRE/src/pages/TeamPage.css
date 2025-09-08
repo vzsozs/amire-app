@@ -1,0 +1,25 @@
+/* src/pages/TeamPage.css */
+
+.team-page-container {
+  /* Ez a konténer felel az oldal belső térközéért, ha szükséges */
+}
+
+.team-page-header {
+  margin-bottom: 25px;
+}
+
+.team-page-header h1 {
+  margin: 0 0 5px 0;
+}
+
+.team-page-header p {
+  margin: 0;
+  color: var(--text-light-color);
+  font-size: 1.1em;
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Térköz a csapattagok között */
+}

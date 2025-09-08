@@ -1,57 +1,76 @@
-// src/pages/TasksPage.jsx
-import React, { useState, useContext } from 'react'; // useContext importálása
-import { TeamContext } from '../context/TeamContext'; // FONTOS: Importáljuk a TeamContext-et
-import { JobContext } from '../context/JobContext'; // ÚJ IMPORT
-import EmptyState from '../components/EmptyState'; // ÚJ IMPORT
-import { useToast } from '../context/useToast'; // EZ A JAVÍTÁS
+// src/pages/TasksPage.jsx (VÉGLEGES, LEBEGŐ GOMBOS ÉS LETISZTÍTOTT VERZIÓ)
+import React, { useState, useContext } from 'react';
+import { TeamContext } from '../context/TeamContext';
+import { JobContext } from '../context/JobContext';
+import EmptyState from '../components/EmptyState';
 import JobItem from '../components/JobItem';
 import Modal from '../components/Modal';
 import AddJobForm from '../components/AddJobForm';
-import { FaPlus, FaTasks } from 'react-icons/fa'; // FaTasks ikon
+import { FaPlus, FaTasks } from 'react-icons/fa';
 import './TasksPage.css';
 
 function TasksPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { showToast } = useToast();
   const { team } = useContext(TeamContext); 
-  const { jobs, addJob } = useContext(JobContext); // ÚJ: Itt olvassuk ki a 'jobs' és 'addJob'-ot
+  const { jobs } = useContext(JobContext);
 
-  const handleFormSubmit = (newJobData) => { 
-    addJob(newJobData);
-    setIsModalOpen(false);
-    showToast('Jippi új munka!', 'success'); // ÜZENET!
-  };
+  // A handleFormSubmit függvényre már nincs szükség, mert az AddJobForm a Context-et használja
+  // const handleFormSubmit = (newJobData) => { ... };
+
+  // Az aktív és befejezett munkák szűrése (ez a logika hiányzott a te kódodból)
+  const activeJobs = jobs.filter(job => job.status === 'Folyamatban' || job.status === 'Függőben');
+  const completedJobs = jobs.filter(job => job.status === 'Befejezve');
 
   return (
-    <div className="tasks-page-container">
-      <div className="tasks-page-header">
-        <h1>Munkák</h1> 
-        <p>Itt vihetsz fel és kezelheted a munkákat.</p> 
-      </div>
-      <div className="job-list">
-        {jobs.length > 0 ? (
-          jobs.map(job => ( 
-            <JobItem key={job.id} job={job} /> 
-          ))
-        ) : (
-          <EmptyState 
-            icon={<FaTasks />} 
-            title="Nincs felvett munka" 
-            message="Kattints a '+' gombra az első munka hozzáadásához!" 
+    // A React Fragment (<>...</>) körbeveszi a konténert és a gombot
+    <>
+      <div className="tasks-page-container">
+        <div className="tasks-page-header">
+          <h1>Munkák</h1> 
+          <p>Itt vihetsz fel és kezelheted a munkákat.</p> 
+        </div>
+
+        {/* A munkákat szétválasztjuk aktív és befejezett listákra a jobb átláthatóságért */}
+        <div className="job-list-section">
+          <h2>Aktív munkák ({activeJobs.length})</h2>
+          <div className="job-list">
+            {activeJobs.length > 0 ? (
+              activeJobs.map(job => <JobItem key={job.id} job={job} />)
+            ) : (
+                <EmptyState 
+                    icon={<FaTasks />} 
+                    title="Nincs aktív munka" 
+                    message="Kattints a '+' gombra az első munka hozzáadásához!" 
+                />
+            )}
+          </div>
+        </div>
+
+        <div className="job-list-section">
+          <h2>Befejezett munkák ({completedJobs.length})</h2>
+          <div className="job-list">
+            {completedJobs.length > 0 ? (
+              completedJobs.map(job => <JobItem key={job.id} job={job} />)
+            ) : (
+              <p className="no-data-message">Nincsenek befejezett munkák.</p>
+            )}
+          </div>
+        </div>
+        
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <AddJobForm
+            team={team}
+            onCancel={() => setIsModalOpen(false)}
+            // Az onAddJob propot eltávolítottuk
           />
-        )}
-      </div>
+        </Modal>
+      </div> {/* A .tasks-page-container itt bezárul */}
+
+      {/* A gomb a konténeren kívülre került */}
       <button onClick={() => setIsModalOpen(true)} className="fab fab-add" aria-label="Új munka">
         <FaPlus />
       </button>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <AddJobForm
-        team={team} // Továbbadjuk a csapat listát
-        onCancel={() => setIsModalOpen(false)}
-        onAddJob={handleFormSubmit} 
-      />
-    </Modal>
-    </div>
+    </>
   );
 }
 

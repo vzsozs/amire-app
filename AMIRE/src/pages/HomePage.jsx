@@ -92,85 +92,91 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
   };*/
 
   return (
-    <div className="home-page-container">
-      <div className="home-header">
-        <h1>Helló</h1>
-        <p>Itt a mai nap legfontosabb információi.</p>
-      </div>
-
-      {/* --- AKTUÁLIS TEENDŐK KÁRTYA (ÚJ NÉV) --- */}
-      <div className="dashboard-card notes-card">
-        <h2 className="card-title">Mai Teendők</h2> {/* ÚJ CÍM */}
-        <div className="notes-list"> {/* Újrahasználjuk a notes-list osztályt */}
-          {uncompletedTodosToday.length > 0 ? (
-            uncompletedTodosToday.map(todo => (
-              <Link to={`/tasks/${todo.jobId}`} key={todo.id} className="note-item" style={{ borderLeft: `5px solid ${todo.jobColor}` }}>
-                <span className="note-text">{todo.text} ({todo.jobTitle})</span>
-                <FaCheckCircle style={{ color: '#4CAF50' }} /> {/* Egy pipa ikon, jelezve, hogy teendő */}
-              </Link>
-            ))
-          ) : (
-            <EmptyState 
-              icon={<FaTasks />} 
-              title="Nincs aktuális teendő" 
-              message="Jó hír, ma nincs elvégzetlen feladatod, vagy a munkák nincsenek ütemezve mára." 
-            />
-          )}
+    // 1. LÉPÉS: Az egészet egy React Fragment-be (<>...</>) csomagoljuk,
+    // mert most már két fő elemet (a konténert és a gombot) adunk vissza.
+    <>
+      <div className="home-page-container">
+        <div className="home-header">
+          <h1>Helló</h1>
+          <p>Itt a mai nap legfontosabb információi.</p>
         </div>
-      </div>
 
-      <div className="dashboard-card">
-        <h2 className="card-title">Aktív Projektek ({activeJobs.length})</h2>
-        <div className="job-list-mini">
-          {activeJobs.length > 0 ? (
-            activeJobs.slice(0, 3).map(job => (
-              <Link to={`/tasks/${job.id}`} key={job.id} className="job-item-mini">
-                <span className="job-title">{job.title}</span>
-                <span className="job-deadline">{job.deadline}</span>
-              </Link>
-            ))
-          ) : (
-            <EmptyState 
-              icon={<FaTasks />} 
-              title="Ma pihenünk" 
-              message="Jelenleg nincsenek folyamatban lévő munkák." 
-            />
-          )}
-        </div>
-      </div>
-
-      {/* --- A "MAI CSAPAT" KÁRTYA MOST MÁR A HELYI SZŰRÉS EREDMÉNYÉT MUTATJA --- */}
-      <div className="dashboard-card">
-        <h2 className="card-title">Mai Csapat ({availableToday.length})</h2>
-        <div className="team-list-mini">
-          {availableToday.length > 0 ? (
-            availableToday.map(member => (
-              <div key={member.id} className="team-item-mini">
-                <FaUserCircle style={{ color: member.color, fontSize: '1.5em' }} />
-                <span>{member.name}</span>
-              </div>
-            ))
-          ) : (
-            <p className="no-data-message">Ma senki sem jelezte, hogy elérhető.</p>
-          )}
-        </div>
-      </div>
-      
-      {upcomingDeadlines.length > 0 && (
-        <div className="dashboard-card warning">
-          <h2 className="card-title"><FaExclamationTriangle /> Közelgő Határidők</h2>
-          <div className="job-list-mini">
-            {upcomingDeadlines.map(job => (
-              <Link to={`/tasks/${job.id}`} key={job.id} className="job-item-mini">
-                <span className="job-title">{job.title}</span>
-                <span className="job-deadline warning-text">{job.deadline}</span>
-              </Link>
-            ))}
+        {/* --- AKTUÁLIS TEENDŐK KÁRTYA --- */}
+        <div className="dashboard-card notes-card">
+          <h2 className="card-title">Mai Teendők</h2>
+          <div className="notes-list">
+            {uncompletedTodosToday.length > 0 ? (
+              uncompletedTodosToday.map(todo => (
+                <Link to={`/tasks/${todo.jobId}`} key={todo.id} className="note-item" style={{ borderLeft: `5px solid ${todo.jobColor}` }}>
+                  <span className="note-text">{todo.text} ({todo.jobTitle})</span>
+                  <FaCheckCircle style={{ color: '#4CAF50' }} />
+                </Link>
+              ))
+            ) : (
+              <EmptyState 
+                icon={<FaTasks />} 
+                title="Nincs aktuális teendő" 
+                message="Jó hír, ma nincs elvégzetlen feladatod, vagy a munkák nincsenek ütemezve mára." 
+              />
+            )}
           </div>
         </div>
-      )}
 
-      {/* --- ÚJ: FRISSÍTÉS GOMB --- */}
+        {/* --- AKTÍV PROJEKTEK KÁRTYA --- */}
+        <div className="dashboard-card">
+          <h2 className="card-title">Aktív Projektek ({activeJobs.length})</h2>
+          <div className="job-list-mini">
+            {activeJobs.length > 0 ? (
+              activeJobs.slice(0, 3).map(job => (
+                <Link to={`/tasks/${job.id}`} key={job.id} className="job-item-mini">
+                  <span className="job-title">{job.title}</span>
+                  <span className="job-deadline">{job.deadline}</span>
+                </Link>
+              ))
+            ) : (
+              <EmptyState 
+                icon={<FaTasks />} 
+                title="Ma pihenünk" 
+                message="Jelenleg nincsenek folyamatban lévő munkák." 
+              />
+            )}
+          </div>
+        </div>
+
+        {/* --- MAI CSAPAT KÁRTYA --- */}
+        <div className="dashboard-card">
+          <h2 className="card-title">Mai Csapat ({availableToday.length})</h2>
+          <div className="team-list-mini">
+            {availableToday.length > 0 ? (
+              availableToday.map(member => (
+                <div key={member.id} className="team-item-mini">
+                  <FaUserCircle style={{ color: member.color, fontSize: '1.5em' }} />
+                  <span>{member.name}</span>
+                </div>
+              ))
+            ) : (
+              <p className="no-data-message">Ma senki sem jelezte, hogy elérhető.</p>
+            )}
+          </div>
+        </div>
+        
+        {/* --- KÖZELGŐ HATÁRIDŐK KÁRTYA --- */}
+        {upcomingDeadlines.length > 0 && (
+          <div className="dashboard-card warning">
+            <h2 className="card-title"><FaExclamationTriangle /> Közelgő Határidők</h2>
+            <div className="job-list-mini">
+              {upcomingDeadlines.map(job => (
+                <Link to={`/tasks/${job.id}`} key={job.id} className="job-item-mini">
+                  <span className="job-title">{job.title}</span>
+                  <span className="job-deadline warning-text">{job.deadline}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </div> {/* A .home-page-container itt bezárul */}
+
+      {/* 2. LÉPÉS: A gombot a konténeren KÍVÜLRE, testvérelemként helyezzük el */}
       <button 
         onClick={handleRefresh} 
         className={`fab fab-refresh ${isRefreshing ? 'refreshing' : ''}`}
@@ -179,8 +185,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
       >
         <FaSyncAlt />
       </button>
-
-    </div>
+    </>
   );
 }
 
