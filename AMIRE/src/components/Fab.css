@@ -1,0 +1,25 @@
+/* src/components/Fab.css */
+
+.fab {
+  position: sticky;
+  bottom: 25px;
+  align-self: flex-end; /* Jobbra igazítja a flex konténeren belül */
+  
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 10;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+.fab-add { background-color: var(--primary-color); }
+.fab-refresh { background-color: #007bff; }
+.fab-refresh.refreshing svg { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

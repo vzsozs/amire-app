@@ -9,6 +9,7 @@ import Modal from '../components/Modal';
 import AddJobForm from '../components/AddJobForm';
 import { FaPlus, FaTasks } from 'react-icons/fa'; // FaTasks ikon
 import './TasksPage.css';
+import '../components/Fab.css';
 
 function TasksPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
