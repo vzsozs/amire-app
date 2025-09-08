@@ -9,7 +9,6 @@ import { FaUserCircle, FaExclamationTriangle, FaPlus, FaCheckCircle, FaTasks, Fa
 import { toYYYYMMDD, normalizeDateToLocalMidnight } from '../utils/date';
 import { useToast } from '../context/useToast';
 import './HomePage.css';
-import '../components/Fab.css';
 
 function HomePage() { // Már nem kapja meg a 'jobs' propot
   //const [newNoteText, setNewNoteText] = useState('');

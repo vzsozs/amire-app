@@ -7,7 +7,6 @@ import AddTeamMemberForm from '../components/AddTeamMemberForm';
 import { FaPlus, FaUserPlus } from 'react-icons/fa'; // FaUsers ikon
 import EmptyState from '../components/EmptyState'; // ÚJ IMPORT
 import './TasksPage.css';
-import '../components/Fab.css';
 import { useToast } from '../context/useToast'; // EZ A JAVÍTÁS
 
 function TeamPage() { 
