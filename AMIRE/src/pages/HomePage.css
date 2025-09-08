@@ -1,10 +1,21 @@
-/* src/pages/HomePage.css */
+/* src/pages/HomePage.css (VÉGLEGES, ÖSSZEFÉSÜLT ÉS JAVÍTOTT VERZIÓ) */
+
+/* A fő tároló, ami a gomb pozicionálásához és az alap padding-hez kell */
 .home-page-container {
-  padding: 20px;
+  position: relative; /* A KULCS: A refresh gomb ehhez fog igazodni */
+  width: 100%;
 }
 
 .home-header {
-  margin-bottom: 20px;
+  margin-bottom: 25px; /* Kicsit nagyobb térköz */
+}
+
+.home-header h1, .home-header p {
+    margin: 0; /* Eltávolítjuk a böngésző alapértelmezett margóit */
+}
+
+.home-header h1 {
+    margin-bottom: 5px;
 }
 
 .dashboard-card {
@@ -13,6 +24,7 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-color);
 }
 
 .card-title {
@@ -32,26 +44,32 @@
   font-style: italic;
 }
 
-/* Mini Munkalista */
-.job-list-mini {
+/* --- LISTÁK STÍLUSAI --- */
+.job-list-mini, .team-list-mini, .notes-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.job-item-mini {
+
+.job-item-mini, .note-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #444;
   border-radius: 6px;
   color: var(--text-color);
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s ease-out;
 }
-.job-item-mini:hover {
+
+/* --- HOVER EFFEKT JAVÍTÁSA --- */
+/* Felülírjuk a globális 'a:hover' szabályt CSAK ezeknél a linkeknél */
+.job-item-mini:hover, .note-item:hover {
+  color: inherit !important; /* A szöveg színe NEM változik */
   background-color: #555;
+  transform: scale(1.02); /* Finom "kiemelkedő" effekt */
 }
+
 .job-item-mini .job-title {
   font-weight: 500;
 }
@@ -60,12 +78,6 @@
   color: var(--text-light-color);
 }
 
-/* Mini Csapatlista */
-.team-list-mini {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 .team-item-mini {
   display: flex;
   align-items: center;
@@ -73,148 +85,50 @@
   font-size: 1.1em;
 }
 
-/* Figyelmeztető kártya */
+/* --- SPECIFIKUS KÁRTYA STÍLUSOK --- */
 .dashboard-card.warning {
-  background-color: #4d3431; /* Sötét pirosas háttér */
+  background-color: #4d3431;
   border: 1px solid #ea4335;
 }
 .dashboard-card.warning .card-title {
-  color: #ff8a80; /* Világos piros */
+  color: #ff8a80;
 }
 .warning-text {
   color: #ff8a80 !important;
   font-weight: bold;
 }
-/* Napi jegyzetek lista */
-/* Napi jegyzetek/Teendők lista - most már Linkeket tartalmaz */
-.notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  /* margin-bottom: 15px; - Ezt már nem kell ide, ha nincs alatta input */
-}
 
 .note-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #444;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none; /* FONTOS: A Link elem miatt */
-  color: #E0E0E0; /* FONTOS: A Link elem miatt */
-  border-left: 5px solid transparent; /* Később a jobColor jön ide */
+  border-left: 5px solid transparent;
 }
-
-.note-item:hover {
-  background-color: #555;
-}
-
-.note-item.completed {
-  /* Ez a class már nem fog hasznos lenni itt, mert csak uncompleted-et mutatunk */
-  background-color: #333;
-  opacity: 0.6;
-}
-
 .note-item .note-text {
-  /* transition: text-decoration 0.2s; - már nem kell */
-  flex-grow: 1; /* Kitölti a helyet */
-}
-
-/* Az egyedi pipa/jelző ikon stílusa */
-.note-item .fa-check-circle { /* A Font Awesome ikon osztályneve */
-    margin-left: 10px;
-    flex-shrink: 0;
-}
-/*
-.checkmark-box {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--text-light-color);
-  border-radius: 4px;
-  flex-shrink: 0;
-  margin-left: 10px;
-  position: relative;
-}
-.note-item.completed .checkmark-box {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-}*/
-/* A pipa ikon (pseudo-element) */
-/*.note-item.completed .checkmark-box::after {
-  content: '✓';
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-}*/
-
-
-/* Új jegyzet űrlap */
-/*.add-note-form {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
-  border-top: 1px solid #555;
-  padding-top: 15px;
-}
-.add-note-input {
   flex-grow: 1;
-  background-color: #222;
-  border: 1px solid #555;
-  border-radius: 6px;
-  color: var(--text-color);
-  padding: 10px;
-  font-size: 1em;
 }
-.add-note-input::placeholder {
-  color: var(--text-light-color);
-}
-.add-note-button {
+.note-item .fa-check-circle {
+  margin-left: 10px;
   flex-shrink: 0;
-  width: 42px;
-  height: 42px;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 6px;
-  color: white; 
-  font-size: 1.2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0; 
 }
-.add-note-button:hover {
-  background-color: var(--primary-light);
-}*/
-/* Stílus kifejezetten a jegyzetek kártyájához */
 .dashboard-card.notes-card {
-  background-color: #302e26; /* Enyhén sárgás-olívás sötétszürke */
+  background-color: #302e26;
 }
 
-/* --- FRISSÍTÉS GOMB (FLOATING ACTION BUTTON) --- */
+/* --- FRISSÍTÉS GOMB STÍLUSAI (JAVÍTVA) --- */
 .refresh-fab {
   position: absolute;
-  bottom: 90px; /* A lábléc felett kb. 25px-szel */
+  bottom: 25px;
   right: 25px;
-  
   width: 56px;
   height: 56px;
-  border-radius: 50%; /* Teljesen kör alakú */
-  background-color: #007bff; /* Kék szín */
+  border-radius: 50%;
+  background-color: #007bff;
   color: white;
-  
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  font-size: 1.5em; /* Ikon mérete */
+  padding: 0; /* Fontos a pontos középre igazításhoz */
   border: none;
+  font-size: 24px; /* Fix ikon méret */
+  line-height: 1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s ease-out;
@@ -222,23 +136,24 @@
 }
 
 .refresh-fab:hover {
-  background-color: #0056b3; /* Sötétebb kék hover-re */
+  background-color: #0056b3;
 }
-
 .refresh-fab:active {
   transform: scale(0.95);
 }
 
-/* Amikor a gomb "refreshing" állapotban van, forogjon az ikon */
 .refresh-fab.refreshing svg {
   animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (min-width: 768px) {
+  .refresh-fab {
+    bottom: 30px;
+    right: 30px;
   }
 }
