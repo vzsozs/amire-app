@@ -2,7 +2,6 @@
 
 /* A fő tároló, ami a gomb pozicionálásához és az alap padding-hez kell */
 .home-page-container {
-  position: relative; /* A KULCS: A refresh gomb ehhez fog igazodni */
   width: 100%;
 }
 
@@ -112,3 +111,36 @@
   background-color: #302e26;
 }
 
+/* --- LEBEGŐ GOMB (STICKY VERZIÓ) --- */
+.fab {
+  position: sticky; /* A KULCS: A gomb a görgethető elemen belül van, de "odaragad" */
+  bottom: 25px;   /* A görgethető konténer aljától 25px-re */
+  left: 100%;     /* Teljesen jobbra toljuk */
+  
+  /* Pozicionálás a jobb alsó sarokba */
+  transform: translateX(calc(-100% - 25px));
+  
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 10;
+  flex-shrink: 0; /* Ne zsugorodjon össze */
+  
+  /* A gomb egy kis "helyet csinál" magának, hogy ne takarja ki az utolsó elemet */
+  margin-top: 10px; 
+}
+
+.fab-refresh { background-color: #007bff; }
+.fab-refresh.refreshing svg { animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
