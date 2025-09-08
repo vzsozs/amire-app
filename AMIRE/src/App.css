@@ -63,19 +63,12 @@ body {
   background-color: #777;
 }
 
-/* --- LEBEGŐ AKCIÓGOMB (FAB) ÁLTALÁNOS STÍLUSA --- */
+/* --- LEBEGŐ AKCIÓGOMB (FAB) VÉGLEGES STÍLUSA --- */
 .fab {
-  position: fixed; /* A KULCS: Rögzítjük a nézethez képest */
-  z-index: 100; /* Biztosítjuk, hogy a tartalom felett legyen */
-  
-  /* Pozíció a jobb alsó sarokban */
-  right: 25px;
-  bottom: 90px; /* A 65px-es lábléc felett, plusz egy kis térköz */
-
-  /* Kinézet */
+  z-index: 100;
   width: 56px;
   height: 56px;
-  border-radius: 50%; /* Kör alak */
+  border-radius: 50%;
   color: white;
   display: flex;
   justify-content: center;
@@ -83,14 +76,21 @@ body {
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: transform 0.2s ease-out;
-  font-size: 24px; /* Az ikon méretéhez */
-  padding: 0; /* Eltávolítjuk az alap gomb paddingot */
-
-  /* Asztali nézetben is a kereten belül marad a korábbi CSS trükk miatt */
+  transition: transform 0.2s ease-out, background-color 0.2s;
+  font-size: 24px;
+  padding: 0;
+  
+  /* --- MOBIL NÉZET (ÁLLÓ ÉS FEKVŐ) --- */
+  /* A gomb a teljes képernyőhöz képest fixen van pozicionálva */
+  position: fixed;
+  right: 25px;
+  /* A KULCS: A lábléc magassága (65px) + a "home bar" helye + extra térköz (20px) */
+  bottom: calc(65px + env(safe-area-inset-bottom) + 20px);
+  
+  /* --- ASZTALI NÉZET (768px felett) --- */
   @media (min-width: 768px) {
-    /* Az .App konténerhez igazodik, nem a teljes ablakhoz */
-    position: absolute; /* Asztali nézetben absolute-ra váltunk */
+    /* Átváltunk abszolút pozícióra, hogy az .App kereten belül maradjon */
+    position: absolute;
     right: 30px;
     bottom: 30px;
   }
@@ -100,22 +100,12 @@ body {
   transform: scale(0.95);
 }
 
-/* Külön osztályok a színekhez */
-.fab-add {
-  background-color: var(--primary-color); /* Lila */
-}
-.fab-add:hover {
-  background-color: var(--primary-light);
-}
+.fab-add { background-color: var(--primary-color); }
+.fab-add:hover { background-color: var(--primary-light); }
 
-.fab-refresh {
-  background-color: #007bff; /* Kék */
-}
-.fab-refresh:hover {
-  background-color: #0056b3;
-}
+.fab-refresh { background-color: #007bff; }
+.fab-refresh:hover { background-color: #0056b3; }
 
-/* Forgó animáció a frissítéshez */
 .fab-refresh.refreshing svg {
   animation: spin 1s linear infinite;
 }
