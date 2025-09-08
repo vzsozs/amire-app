@@ -1,20 +1,42 @@
 // src/pages/HomePage.jsx
-import React, { useMemo, useContext } from 'react'; // useContext-et importálunk
+import React, { useMemo, useContext, useState } from 'react'; // useContext-et importálunk
 import { TeamContext } from '../context/TeamContext'; // TeamContext-et importálunk
 import { useJobs } from '../context/useJobs';
 import { Link } from 'react-router-dom';
 import { JobContext } from '../context/JobContext'; // ÚJ IMPORT
 import EmptyState from '../components/EmptyState'; // ÚJ IMPORT
-import { FaUserCircle, FaExclamationTriangle, FaPlus, FaCheckCircle, FaTasks, FaUsers } from 'react-icons/fa'; // FaTasks, FaUsers ikonok
+import { FaUserCircle, FaExclamationTriangle, FaPlus, FaCheckCircle, FaTasks, FaUsers, FaSyncAlt } from 'react-icons/fa'; // FaTasks, FaUsers ikonok
 import { toYYYYMMDD, normalizeDateToLocalMidnight } from '../utils/date';
+import { useToast } from '../context/useToast';
 import './HomePage.css';
 
 function HomePage() { // Már nem kapja meg a 'jobs' propot
   //const [newNoteText, setNewNoteText] = useState('');
   
   // FONTOS: Most már a Context-ből olvassuk a team-et
-  const { team } = useContext(TeamContext);
-  const { jobs } = useJobs();
+  const { team, fetchTeam } = useContext(TeamContext);
+  const { jobs, fetchJobs } = useJobs();
+  const { showToast } = useToast();
+
+  // Új állapot a frissítés folyamatának jelzésére
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+   // A frissítést kezelő függvény
+  const handleRefresh = async () => {
+    setIsRefreshing(true); // Elindítjuk a "töltést"
+    showToast("Adatok frissítése...", "info", 2000);
+
+    try {
+      // Párhuzamosan futtatjuk a két adatlekérést a gyorsabb működésért
+      await Promise.all([fetchJobs(), fetchTeam()]);
+      showToast("Adatok sikeresen frissítve!", "success");
+    } catch (error) {
+      console.error("Hiba az adatok manuális frissítésekor:", error); 
+      showToast("Hiba a frissítés során!", "error");
+    } finally {
+      setIsRefreshing(false); // Befejezzük a "töltést"
+    }
+  };
 
   // Normalizált mai dátum objektum
   const todayDateObject = useMemo(() => normalizeDateToLocalMidnight(new Date()), []);
@@ -147,6 +169,16 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
           </div>
         </div>
       )}
+
+      {/* --- ÚJ: FRISSÍTÉS GOMB --- */}
+      <button 
+        onClick={handleRefresh} 
+        className={`refresh-fab ${isRefreshing ? 'refreshing' : ''}`}
+        disabled={isRefreshing}
+        aria-label="Adatok frissítése"
+      >
+        <FaSyncAlt />
+      </button>
 
     </div>
   );

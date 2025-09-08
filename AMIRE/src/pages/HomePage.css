@@ -196,3 +196,49 @@
 .dashboard-card.notes-card {
   background-color: #302e26; /* Enyhén sárgás-olívás sötétszürke */
 }
+
+/* --- FRISSÍTÉS GOMB (FLOATING ACTION BUTTON) --- */
+.refresh-fab {
+  position: absolute;
+  bottom: 90px; /* A lábléc felett kb. 25px-szel */
+  right: 25px;
+  
+  width: 56px;
+  height: 56px;
+  border-radius: 50%; /* Teljesen kör alakú */
+  background-color: #007bff; /* Kék szín */
+  color: white;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  font-size: 1.5em; /* Ikon mérete */
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s ease-out;
+  z-index: 999;
+}
+
+.refresh-fab:hover {
+  background-color: #0056b3; /* Sötétebb kék hover-re */
+}
+
+.refresh-fab:active {
+  transform: scale(0.95);
+}
+
+/* Amikor a gomb "refreshing" állapotban van, forogjon az ikon */
+.refresh-fab.refreshing svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

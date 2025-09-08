@@ -89,6 +89,7 @@ export const TeamProvider = ({ children }) => {
     addTeamMember,
     deleteTeamMember,
     saveTeamMemberChanges,
+    fetchTeam, // <-- EZT A SORT ADD HOZZÁ
   };
 
   return <TeamContext.Provider value={value}>{children}</TeamContext.Provider>;

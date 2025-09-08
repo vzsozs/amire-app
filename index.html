@@ -2,27 +2,41 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMIRE - Projektkezelő Alkalmazás</title>
+    <title>Átirányítás...</title>
+
+    <!-- 1. Módszer: Azonnali átirányítás JavaScript segítségével (ajánlott) -->
+    <script>
+        window.location.replace("https://amire-app.vercel.app");
+    </script>
+
+    <!-- 2. Módszer: Meta refresh, mint "fallback" (ha a JavaScript le van tiltva) -->
+    <!-- Ez a sor 0 másodperc után átirányít. -->
+    <meta http-equiv="refresh" content="0; url=https://amire-app.vercel.app">
+
     <style>
-        /* A teljes oldal kitöltéséhez és a keret elrejtéséhez */
-        body, html {
+        body {
+            font-family: sans-serif;
+            background-color: #121212;
+            color: #E0E0E0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; /* Ne legyen scroll a főoldalon */
-            font-family: 'Nunito Sans', sans-serif; /* Az alap betűtípus */
+            text-align: center;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none; /* Ne legyen keret az iframe körül */
+        a {
+            color: #BB86FC;
         }
     </style>
 </head>
 <body>
-    <!-- Az iframe, ami beágyazza a Vercel-es alkalmazásodat -->
-    <iframe src="https://amire.vercel.app/"></iframe>
+    <p>
+        Átirányítás az AMIRE alkalmazásra...<br><br>
+        Ha az átirányítás nem történik meg automatikusan, kérlek kattints ide:
+        <a href="https://amire-app.vercel.app">https://amire-app.vercel.app</a>
+    </p>
 </body>
 </html>

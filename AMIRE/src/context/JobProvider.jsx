@@ -97,6 +97,7 @@ export const JobProvider = ({ children }) => {
     deleteJob,
     updateJob,
     saveJobChanges,
+    fetchJobs, // <-- EZT A SORT ADD HOZZÁ
   };
 
   return <JobContext.Provider value={value}>{children}</JobContext.Provider>;
