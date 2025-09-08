@@ -20,29 +20,3 @@
   padding: 0 20px; /* Oldalsó padding a listának */
 }
 
-/* Floating Action Button (FAB) - Lebegő gomb */
-.fab {
-  position: absolute; /* Az app-content-hez képest pozicionáljuk */
-  right: 20px;
-  bottom: 20px;
-  width: 56px;
-  height: 56px;
-  padding: 0; /* EZ AZ ÚJ SOR, AMI MEGOLDJA A PROBLÉMÁT */
-  border-radius: 50%; /* Kör alakú gomb */
-  background-color: var(--primary-color);
-  color: white;
-  font-size: 1.5em; /* Nagyobb ikon */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: var(--shadow-medium);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
-  z-index: 100; /* Legyen minden felett */
-}
-
-.fab:hover {
-  background-color: var(--primary-light);
-  transform: scale(1.05); /* Enyhe nagyítás hover-re */
-}

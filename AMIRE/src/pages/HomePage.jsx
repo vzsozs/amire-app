@@ -173,7 +173,7 @@ function HomePage() { // Már nem kapja meg a 'jobs' propot
       {/* --- ÚJ: FRISSÍTÉS GOMB --- */}
       <button 
         onClick={handleRefresh} 
-        className={`refresh-fab ${isRefreshing ? 'refreshing' : ''}`}
+        className={`fab fab-refresh ${isRefreshing ? 'refreshing' : ''}`}
         disabled={isRefreshing}
         aria-label="Adatok frissítése"
       >

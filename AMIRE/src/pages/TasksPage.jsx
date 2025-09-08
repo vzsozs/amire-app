@@ -41,7 +41,7 @@ function TasksPage() {
           />
         )}
       </div>
-      <button className="fab" onClick={() => setIsModalOpen(true)}>
+      <button onClick={() => setIsModalOpen(true)} className="fab fab-add" aria-label="Új munka">
         <FaPlus />
       </button>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

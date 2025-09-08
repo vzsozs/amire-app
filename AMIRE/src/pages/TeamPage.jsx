@@ -31,8 +31,8 @@ function TeamPage() {
           <TeamMemberItem key={person.id} person={person} /> 
         ))}
       </div>
-      <button className="fab" onClick={() => setIsModalOpen(true)}>
-        <FaPlus />
+      <button onClick={() => setIsModalOpen(true)} className="fab fab-add" aria-label="Új tag">
+        <FaUserPlus />
       </button>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

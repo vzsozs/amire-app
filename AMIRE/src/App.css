@@ -62,3 +62,65 @@ body {
 .app-content::-webkit-scrollbar-thumb:hover {
   background-color: #777;
 }
+
+/* --- LEBEGŐ AKCIÓGOMB (FAB) ÁLTALÁNOS STÍLUSA --- */
+.fab {
+  position: fixed; /* A KULCS: Rögzítjük a nézethez képest */
+  z-index: 100; /* Biztosítjuk, hogy a tartalom felett legyen */
+  
+  /* Pozíció a jobb alsó sarokban */
+  right: 25px;
+  bottom: 90px; /* A 65px-es lábléc felett, plusz egy kis térköz */
+
+  /* Kinézet */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%; /* Kör alak */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+  font-size: 24px; /* Az ikon méretéhez */
+  padding: 0; /* Eltávolítjuk az alap gomb paddingot */
+
+  /* Asztali nézetben is a kereten belül marad a korábbi CSS trükk miatt */
+  @media (min-width: 768px) {
+    /* Az .App konténerhez igazodik, nem a teljes ablakhoz */
+    position: absolute; /* Asztali nézetben absolute-ra váltunk */
+    right: 30px;
+    bottom: 30px;
+  }
+}
+
+.fab:active {
+  transform: scale(0.95);
+}
+
+/* Külön osztályok a színekhez */
+.fab-add {
+  background-color: var(--primary-color); /* Lila */
+}
+.fab-add:hover {
+  background-color: var(--primary-light);
+}
+
+.fab-refresh {
+  background-color: #007bff; /* Kék */
+}
+.fab-refresh:hover {
+  background-color: #0056b3;
+}
+
+/* Forgó animáció a frissítéshez */
+.fab-refresh.refreshing svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
